@@ -3,62 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robocon 2021</title>
-    <style>
-        .container { 
-            height: 450px;
-            position: relative;
-            /*border: 3px solid green; */
-        }
-
-        .potset { 
-            height: 70px;
-            width: 110px;
-            position: absolute;
-            /*border: 3px solid green; */ 
-        }
-
-        .button {
-            height: 20px;
-            line-height: 15px;  
-            width: 20px;  
-            font-size: 0.5em;
-            border-radius: 50%;
-            background-color: #808080;
-            color: white;
-            text-align: center;
-            cursor: pointer;
-            position: absolute;
-            padding: 0;
-            -webkit-appearance: none;
-        }
-
-        .circle {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 20px;
-            line-height: 50px;
-            color: #fff;
-            text-align: center;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            vertical-align: middle;
-            position: absolute;
-        }  
-        
-        .bluepot{
-            background-color: #0000FF;
-        }
-        .redpot{
-            background-color: #FF0000;
-        }
-
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Robocon 2021 Counter</title>
+    <link href="StyleSheet.css" rel="stylesheet">
 </head>
 <body>
+    <div><p>Robocon 2021 Counter</p></div>
     <div class="container">
         <div class="potset" style="left:50%; top:0; transform: translateX(-50%);">
             <div class="circle bluepot" id="b1">0</div>
@@ -112,6 +62,10 @@
             <span style="color: #0000FF;" id="blueScore">0</span> 
             <span style="color: #000000;">:</span>
             <span style="color: #FF0000;" id="redScore">0</span>
+        </p>
+        <p style="text-align: center;">
+            <span id="teamid"></span> 
+            <span id="resultText">:</span>
         </p>
         <button type="button" onclick="reset()">Reset</button>
     </div>
