@@ -1,95 +1,112 @@
 var blueScore = 0, redScore = 0;
 var numOfArrow = new Array(2);
+var victory = false;
  
 // Loop to create 2D array using 1D array
 for (var i = 0; i < 2; i++) {
     numOfArrow[i] = new Array(5);
 }
 
-for (var i = 0; i < numOfArrow.length; i++) {
+for (var i = 0; i < 2; i++) {
     for(var j = 0; j < 5; j++){
         numOfArrow[i][j] = 0;
     }
 }
 
 function add1(pot){
-    var col = 0, row = pot.charCodeAt(1)-49;
-    if(pot.charAt(0) == 'r'){
-        col = 1;
+    if(!victory){
+        var col = 0, row = pot.charCodeAt(1)-49;
+        if(pot.charAt(0) == 'r'){
+            col = 1;
+        }
+        numOfArrow[col][row]++;
+        document.getElementById(pot).textContent = numOfArrow[col][row].toString();
+        updateScore();
+        compare();
     }
-    numOfArrow[col][row]++;
-    document.getElementById(pot).textContent = numOfArrow[col][row].toString();
-    updateBlue();
-    updateRed();
 }
 
 function minus1(pot){
-    var col = 0, row = pot.charCodeAt(1)-49;
-    if(pot.charAt(0) == 'r'){
-        col = 1;
-    }
-    if(numOfArrow[col][row] > 0){
-        numOfArrow[col][row]--;
-    }
-    document.getElementById(pot).textContent = numOfArrow[col][row].toString();
-    updateBlue();
-    updateRed();
+    if(!victory){
+        var col = 0, row = pot.charCodeAt(1)-49;
+        if(pot.charAt(0) == 'r'){
+            col = 1;
+        }
+        if(numOfArrow[col][row] > 0){
+            numOfArrow[col][row]--;
+        }
+        document.getElementById(pot).textContent = numOfArrow[col][row].toString();
+        updateScore();
+        compare();
+    }   
 }
 
-function updateBlue(){
-    let number = [];
-    number[0] = parseInt(document.getElementById("b1").textContent);
-    number[1] = parseInt(document.getElementById("b2").textContent);
-    number[2] = parseInt(document.getElementById("b3").textContent);
-    number[3] = parseInt(document.getElementById("b4").textContent);
-    number[4] = parseInt(document.getElementById("b5").textContent);
-
+function updateScore(){
     var score = 0;
-    for(var i = 0; i < 5; i++){
-        if(number[i] <= 4){
-            if(number[i] % 2 == 0){
-                score += number[i] * 2;
+    for(var i = 0; i < 2; i++){
+        for(var j = 0; j < 5; j++){
+            if(numOfArrow[i][j] <= 4){
+                if(numOfArrow[i][j] % 2 == 0){
+                    score += numOfArrow[i][j] * 2;
+                }else{
+                    score += numOfArrow[i][j] * 2 - 1;
+                }
             }else{
-                score += number[i] * 2 - 1;
+                score += numOfArrow[i][j] + 4;
             }
-        }else{
-            score += number[i] + 4;
         }
+        if(i == 0){
+            blueScore = score;
+        }else{
+            redScore = score;
+        }
+        score = 0;
     }
-    blueScore = score;
     document.getElementById("blueScore").innerHTML = blueScore.toString();
-}
-
-function updateRed(){
-    var score = 0;
-    for(var i = 0; i < 5; i++){
-        if(numOfArrow[1][i] <= 4){
-            if(numOfArrow[1][i] % 2 == 0){
-                score += numOfArrow[1][i] * 2;
-            }else{
-                score += numOfArrow[1][i] * 2 - 1;
-            }
-        }else{
-            score += numOfArrow[1][i] + 4;
-        }
-    }
-    redScore = score;
     document.getElementById("redScore").innerHTML = redScore.toString();
+    
 }
 
 function reset(){
     for(var i = 1; i <= 5; i++){
         document.getElementById("b" + i).textContent = "0";
         document.getElementById("r" + i).textContent = "0";
+        numOfArrow[0][i] = 0;
+        numOfArrow[1][i] = 0;
     }
-    updateRed();
-    updateBlue();
+    updateScore();
+    victory = false;
 }
 
 function compare(){
-    var flag = false;
-    for(var i = 1; i <= 5; i++){
-        document.getElementById("b" + i).textContent = "0";
-        document.getElementById("r" + i).textContent = "0";
+    var flag = true;
+    for(var i = 0; i < 2; i++){
+        for(var j = 0; j < 5; j++){
+            flag = flag && numOfArrow[i][j] >= 2;
+        }
+        if(flag == true){
+            victory = true;
+            if(i == 0){
+                document.getElementById("teamid").textContent = "Blue Team";
+                document.getElementById("teamid").style.color = 'blue';
+            }else{
+                document.getElementById("teamid").textContent = "Red Team";
+                document.getElementById("teamid").style.color = 'red';
+            }
+            document.getElementById("resultText").textContent = " Great Victory!!";
+        }
+        flag = true;
+    }
+
+    if(blueScore > redScore){
+        document.getElementById("teamid").textContent = "Blue Team";
+        document.getElementById("teamid").style.color = 'blue';
+        document.getElementById("resultText").textContent = " is leading.";
+    }else if(redScore > blueScore){
+        document.getElementById("teamid").textContent = "Red Team";
+        document.getElementById("teamid").style.color = 'red';
+        document.getElementById("resultText").textContent = " is leading.";
+    }else{
+        document.getElementById("resultText").textContent = "Fair.";
     }
 }
