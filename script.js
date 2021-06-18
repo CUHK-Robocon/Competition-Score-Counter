@@ -71,10 +71,12 @@ function reset(){
     for(var i = 1; i <= 5; i++){
         document.getElementById("b" + i).textContent = "0";
         document.getElementById("r" + i).textContent = "0";
-        numOfArrow[0][i] = 0;
-        numOfArrow[1][i] = 0;
+        numOfArrow[0][i-1] = 0;
+        numOfArrow[1][i-1] = 0;
     }
     updateScore();
+    redScore = 0;
+    blueScore = 0;
     victory = false;
 }
 
