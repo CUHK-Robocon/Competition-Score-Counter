@@ -14,7 +14,7 @@ for (var i = 0; i < 2; i++) {
 }
 
 function add1(pot){
-    if(!victory){
+    if(!isGreatVic("blue") && !isGreatVic("red")){
         var col = 0, row = pot.charCodeAt(1)-49;
         if(pot.charAt(0) == 'r'){
             col = 1;
@@ -27,7 +27,7 @@ function add1(pot){
 }
 
 function minus1(pot){
-    if(!victory){
+    if(!isGreatVic("blue") && !isGreatVic("red")){
         var col = 0, row = pot.charCodeAt(1)-49;
         if(pot.charAt(0) == 'r'){
             col = 1;
@@ -68,40 +68,38 @@ function updateScore(){
 }
 
 function reset(){
-    for(var i = 1; i <= 5; i++){
-        document.getElementById("b" + i).textContent = "0";
-        document.getElementById("r" + i).textContent = "0";
-        numOfArrow[0][i-1] = 0;
-        numOfArrow[1][i-1] = 0;
+    for(var i = 0; i < 5; i++){
+        document.getElementById("b" + (i + 1)).textContent = "0";
+        document.getElementById("r" + (i + 1)).textContent = "0";
+        numOfArrow[0][i] = 0;
+        numOfArrow[1][i] = 0;
     }
     updateScore();
-    redScore = 0;
-    blueScore = 0;
-    victory = false;
+    compare();
+}
+
+function isGreatVic(team){
+    var flag = true;
+    var i = 0;
+    if(team == "red"){
+        i = 1;
+    }
+    for(var j = 0; j < 5; j++){
+        flag = flag && numOfArrow[i][j] >= 2;
+    }
+    return flag;
 }
 
 function compare(){
-    var flag = true;
-    for(var i = 0; i < 2; i++){
-        for(var j = 0; j < 5; j++){
-            flag = flag && numOfArrow[i][j] >= 2;
-        }
-        if(flag){
-            victory = true;
-            if(i == 0){
-                document.getElementById("teamid").textContent = "Blue Team";
-                document.getElementById("teamid").style.color = 'blue';
-            }else{
-                document.getElementById("teamid").textContent = "Red Team";
-                document.getElementById("teamid").style.color = 'red';
-            }
-            document.getElementById("resultText").textContent = " Great Victory!!";
-            flag = false;
-        }else{
-            flag = true;
-        }
-    }
-    if(flag){
+    if(isGreatVic("blue")){
+        document.getElementById("teamid").textContent = "Blue Team";
+        document.getElementById("teamid").style.color = 'blue';
+        document.getElementById("resultText").textContent = " Great Victory!!";
+    }else if(isGreatVic("red")){
+        document.getElementById("teamid").textContent = "Red Team";
+        document.getElementById("teamid").style.color = 'red';
+        document.getElementById("resultText").textContent = " Great Victory!!";
+    }else{
         if(blueScore > redScore){
             document.getElementById("teamid").textContent = "Blue Team";
             document.getElementById("teamid").style.color = 'blue';
