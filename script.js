@@ -86,7 +86,7 @@ function compare(){
         for(var j = 0; j < 5; j++){
             flag = flag && numOfArrow[i][j] >= 2;
         }
-        if(flag == true){
+        if(flag){
             victory = true;
             if(i == 0){
                 document.getElementById("teamid").textContent = "Blue Team";
@@ -96,19 +96,26 @@ function compare(){
                 document.getElementById("teamid").style.color = 'red';
             }
             document.getElementById("resultText").textContent = " Great Victory!!";
+            flag = false;
+        }else{
+            flag = true;
         }
-        flag = true;
     }
-
-    if(blueScore > redScore){
-        document.getElementById("teamid").textContent = "Blue Team";
-        document.getElementById("teamid").style.color = 'blue';
-        document.getElementById("resultText").textContent = " is leading.";
-    }else if(redScore > blueScore){
-        document.getElementById("teamid").textContent = "Red Team";
-        document.getElementById("teamid").style.color = 'red';
-        document.getElementById("resultText").textContent = " is leading.";
-    }else{
-        document.getElementById("resultText").textContent = "Fair.";
+    if(flag){
+        if(blueScore > redScore){
+            document.getElementById("teamid").textContent = "Blue Team";
+            document.getElementById("teamid").style.color = 'blue';
+            document.getElementById("resultText").textContent = " is leading.";
+        }else if(redScore > blueScore){
+            document.getElementById("teamid").textContent = "Red Team";
+            document.getElementById("teamid").style.color = 'red';
+            document.getElementById("resultText").textContent = " is leading.";
+        }else if(redScore == blueScore && blueScore == 0){
+            document.getElementById("resultText").textContent = "";
+            document.getElementById("teamid").textContent = ""
+        }else{
+            document.getElementById("resultText").textContent = "Fair.";
+            document.getElementById("teamid").textContent = "";
+        }
     }
 }
