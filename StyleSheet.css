@@ -1,21 +1,25 @@
 .container { 
-    height: 450px;
+    height: 400px;
     position: relative;
     /*border: 3px solid green; */
 }
 
 .potset { 
     height: 80px;
-    width: 140px;
+    width: 130px;
     position: absolute;
     border: 3px solid green; 
+    padding: 0%; 
+    margin: 0%;
 }
 
 .pot { 
     height: 80px;
     width: 60px;
     position: absolute;
-    border: 3px solid orange; 
+    border: 3px solid orange;
+    padding: 0%; 
+    margin: 0%;
 }
 
 .button {
