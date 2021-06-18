@@ -2,28 +2,36 @@ var blueScore = 0, redScore = 0;
 var numOfArrow = new Array(2);
  
 // Loop to create 2D array using 1D array
-for (var i = 0; i < numOfArrow.length; i++) {
+for (var i = 0; i < 2; i++) {
     numOfArrow[i] = new Array(5);
 }
 
-function add1(pot){
-    var count = document.getElementById(pot);
-    var number = parseInt(count.textContent);
-    if(number < 20){
-        number++;
-        count.textContent = number.toString();
+for (var i = 0; i < numOfArrow.length; i++) {
+    for(var j = 0; j < 5; j++){
+        numOfArrow[i][j] = 0;
     }
+}
+
+function add1(pot){
+    var col = 0, row = pot.charCodeAt(1)-49;
+    if(pot.charAt(0) == 'r'){
+        col = 1;
+    }
+    numOfArrow[col][row]++;
+    document.getElementById(pot).textContent = numOfArrow[col][row].toString();
     updateBlue();
     updateRed();
 }
 
 function minus1(pot){
-    var count = document.getElementById(pot);
-    var number = parseInt(count.textContent);
-    if(number > 0){
-        number--;
-        count.textContent = number.toString();
+    var col = 0, row = pot.charCodeAt(1)-49;
+    if(pot.charAt(0) == 'r'){
+        col = 1;
     }
+    if(numOfArrow[col][row] > 0){
+        numOfArrow[col][row]--;
+    }
+    document.getElementById(pot).textContent = numOfArrow[col][row].toString();
     updateBlue();
     updateRed();
 }
@@ -53,10 +61,6 @@ function updateBlue(){
 }
 
 function updateRed(){
-    for(var i = 0; i < 5; i++){
-        numOfArrow[1][i] = parseInt(document.getElementById("r" + i + 1).textContent);
-    }
-
     var score = 0;
     for(var i = 0; i < 5; i++){
         if(numOfArrow[1][i] <= 4){
@@ -74,8 +78,7 @@ function updateRed(){
 }
 
 function reset(){
-    var i = 0;
-    for(i = 1; i <= 5; i++){
+    for(var i = 1; i <= 5; i++){
         document.getElementById("b" + i).textContent = "0";
         document.getElementById("r" + i).textContent = "0";
     }
@@ -84,5 +87,9 @@ function reset(){
 }
 
 function compare(){
-
+    var flag = false;
+    for(var i = 1; i <= 5; i++){
+        document.getElementById("b" + i).textContent = "0";
+        document.getElementById("r" + i).textContent = "0";
+    }
 }

@@ -6,7 +6,7 @@
 
 .potset { 
     height: 80px;
-    width: 110px;
+    width: 115px;
     position: absolute;
     /*border: 3px solid green; */
     padding: 0%; 
@@ -15,7 +15,7 @@
 
 .pot { 
     height: 80px;
-    width: 50px;
+    width: 55px;
     position: absolute;
     /*border: 3px solid orange;*/
     padding: 0%; 
@@ -35,6 +35,7 @@
     position: absolute;
     padding: 0;
     -webkit-appearance: none;
+    touch-action: manipulation;
     bottom: 0%;
 }
 
