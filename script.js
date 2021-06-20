@@ -1,15 +1,18 @@
 var blueScore = 0, redScore = 0;
 var numOfArrow = new Array(2);
+var score1 = new Array(2);
 var victory = false;
  
 // Loop to create 2D array using 1D array
 for (var i = 0; i < 2; i++) {
     numOfArrow[i] = new Array(5);
+    score1[i] = new Array(5);
 }
 
 for (var i = 0; i < 2; i++) {
     for(var j = 0; j < 5; j++){
         numOfArrow[i][j] = 0;
+        score1[i][j] = 0;
     }
 }
 
@@ -47,11 +50,14 @@ function updateScore(){
         for(var j = 0; j < 5; j++){
             if(numOfArrow[i][j] <= 4){
                 if(numOfArrow[i][j] % 2 == 0){
+                    score1[i][j] = numOfArrow[i][j] * 2;
                     score += numOfArrow[i][j] * 2;
                 }else{
+                    score1[i][j] = numOfArrow[i][j] * 2 - 1;
                     score += numOfArrow[i][j] * 2 - 1;
                 }
             }else{
+                score1[i][j] = numOfArrow[i][j] + 4;
                 score += numOfArrow[i][j] + 4;
             }
         }
@@ -64,6 +70,8 @@ function updateScore(){
     }
     document.getElementById("blueScore").innerHTML = blueScore.toString();
     document.getElementById("redScore").innerHTML = redScore.toString();
+    document.getElementById("blueScore1").innerHTML = score1[0][0].toString() + " " + score1[0][1].toString() + " " + score1[0][2].toString() + " " + score1[0][3].toString() + " " + score1[0][4].toString();
+    document.getElementById("redScore1").innerHTML = score1[1][0].toString() + " " + score1[1][1].toString() + " " + score1[1][2].toString() + " " + score1[1][3].toString() + " " + score1[1][4].toString();
     
 }
 
