@@ -1,5 +1,5 @@
 .container { 
-    height: 400px;
+    height: 350px;
     position: relative;
     /*border: 3px solid green; */
 }
@@ -17,26 +17,9 @@
     height: 80px;
     width: 55px;
     position: absolute;
-    /*border: 3px solid orange;*/
+    border: 3px solid orange;
     padding: 0%; 
     margin: 0%;
-}
-
-.button {
-    height: 25px;
-    line-height: 15px;  
-    width: 25px;  
-    font-size: 0.5em;
-    border-radius: 50%;
-    background-color: #808080;
-    color: white;
-    text-align: center;
-    cursor: pointer;
-    position: absolute;
-    padding: 0;
-    -webkit-appearance: none;
-    touch-action: manipulation;
-    bottom: 0%;
 }
 
 .circle {
@@ -53,13 +36,15 @@
     vertical-align: middle;
     position: absolute;
     left:50%; 
-    top:0; 
+    bottom:0; 
     transform: translateX(-50%);
+    -webkit-appearance: none;
+    touch-action: manipulation;
 }  
 
-.bluepot{
+.blue{
     background-color: #0000FF;
 }
-.redpot{
+.red{
     background-color: #FF0000;
 }

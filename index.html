@@ -4,96 +4,85 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>Robocon 2021 Counter</title>
+    <title>Robocon 2021 Score Counter</title>
     <link href="StyleSheet.css" rel="stylesheet">
 </head>
 <body>
-    <div><h3 style="text-align: center;">Robocon 2021 Counter</h3></div>
+    <h3 style="text-align: center;">Robocon 2021 Counter</h3>
+    <h3 style="text-align: center;">
+        <span style="color: #0000FF;" id="blueScore">0</span> 
+        <span style="color: #000000;">:</span>
+        <span style="color: #FF0000;" id="redScore">0</span>
+    </h3>
+    <p style="text-align: center;">
+        <span id="teamid"></span> 
+        <span id="resultText">Fair.</span>
+    </p>
+
     <div class="container">
         <div class="potset" style="left:50%; top:0; transform: translateX(-50%);">
             <div class="pot">
-                <div class="circle bluepot" id="b1">0</div>
-                <button class="button" style="left:0%;" onclick="add1('b1')">+</button>
-                <button class="button" style="right:0%;" onclick="minus1('b1')">-</button>
+                <p style="text-align: center; top: 0; color: blue;" id="scoreb1">0</p>
+                <button class="circle blue" id="b1" onclick="add('b1')">0</button>
             </div>
             <div class="pot" style="right: 0%;">
-                <div class="circle redpot" id="r1">0</div>
-                <button class="button" style="left:0%;" onclick="add1('r1')">+</button>
-                <button class="button" style="right:0%;" onclick="minus1('r1')">-</button>
+                <p style="text-align: center; top: 0; color: red;" id="scorer1">0</p>
+                <button class="circle red" id="r1" onclick="add('r1')">0</button>
             </div>
         </div>
 
         <div class="potset" style="left:0; top:50%; transform: translateY(-50%);">
             <div class="pot">
-                <div class="circle bluepot" id="b2">0</div>
-                <button class="button" style="left:0%;" onclick="add1('b2')">+</button>
-                <button class="button" style="right:0%;" onclick="minus1('b2')">-</button>
+                <p style="text-align: center; top: 0; color: blue;" id="scoreb2">0</p>
+                <button class="circle blue" id="b2" onclick="add('b2')">0</button>
             </div>
             <div class="pot" style="right: 0%;">
-                <div class="circle redpot" id="r2">0</div>
-                <button class="button" style="left:0%;" onclick="add1('r2')">+</button>
-                <button class="button" style="right:0%;" onclick="minus1('r2')">-</button>
+                <p style="text-align: center; top: 0; color: red;" id="scorer2">0</p>
+                <button class="circle red" id="r2" onclick="add('r2')">0</button>
             </div>
         </div>
 
         <div class="potset" style="left:50%; top:50%; transform: translate(-50%, -50%);">
             <div class="pot">
-                <div class="circle bluepot" id="b3">0</div>
-                <button class="button" style="left:0%;" onclick="add1('b3')">+</button>
-                <button class="button" style="right:0%;" onclick="minus1('b3')">-</button>
+                <p style="text-align: center; top: 0; color: blue;" id="scoreb3">0</p>
+                <button class="circle blue" id="b3" onclick="add('b3')">0</button>
             </div>
             <div class="pot" style="right: 0%;">
-                <div class="circle redpot" id="r3">0</div>
-                <button class="button" style="left:0%;" onclick="add1('r3')">+</button>
-                <button class="button" style="right:0%;" onclick="minus1('r3')">-</button>
+                <p style="text-align: center; top: 0; color: red;" id="scorer3">0</p>
+                <button class="circle red" id="r3" onclick="add('r3')">0</button>
             </div>
         </div>
 
         <div class="potset" style="right:0; top:50%; transform: translateY(-50%);">
             <div class="pot">
-                <div class="circle bluepot" id="b4">0</div>
-                <button class="button" style="left:0%;" onclick="add1('b4')">+</button>
-                <button class="button" style="right:0%;" onclick="minus1('b4')">-</button>
+                <p style="text-align: center; top: 0; color: blue;" id="scoreb4">0</p>
+                <button class="circle blue" id="b4" onclick="add('b4')">0</button>
             </div>
             <div class="pot" style="right: 0%;">
-                <div class="circle redpot" id="r4">0</div>
-                <button class="button" style="left:0%;" onclick="add1('r4')">+</button>
-                <button class="button" style="right:0%;" onclick="minus1('r4')">-</button>
+                <p style="text-align: center; top: 0; color: red;" id="scorer4">0</p>
+                <button class="circle red" id="r4" onclick="add('r4')">0</button>
             </div>
         </div>
 
         <div class="potset" style="left:50%; bottom: 0; transform: translateX(-50%);">
             <div class="pot">
-                <div class="circle bluepot" id="b5">0</div>
-                <button class="button" style="left:0%;" onclick="add1('b5')">+</button>
-                <button class="button" style="right:0%;" onclick="minus1('b5')">-</button>
+                <p style="text-align: center; top: 0; color: blue;" id="scoreb5">0</p>
+                <button class="circle blue" id="b5" onclick="add('b5')">0</button>
             </div>
             <div class="pot" style="right: 0%;">
-                <div class="circle redpot" id="r5">0</div>
-                <button class="button" style="left:0%;" onclick="add1('r5')">+</button>
-                <button class="button" style="right:0%;" onclick="minus1('r5')">-</button>
+                <p style="text-align: center; top: 0; color: red;" id="scorer5">0</p>
+                <button class="circle red" id="r5" onclick="add('r5')">0</button>
             </div>
         </div>
     </div>
         
     <div>
-        <p>Final Result:</p>
-        <p style="text-align: center;">
-            <span style="color: #0000FF;" id="blueScore">0</span> 
-            <span style="color: #000000;">:</span>
-            <span style="color: #FF0000;" id="redScore">0</span>
-        </p>
-        <p style="text-align: center;">
-            <span style="color: #0000FF;" id="blueScore1">0 0 0 0 0</span> 
-            <span style="color: #000000;">:</span>
-            <span style="color: #FF0000;" id="redScore1">0 0 0 0 0</span>
-        </p>
-        <p style="text-align: center;">
-            <span id="teamid"></span> 
-            <span id="resultText"></span>
+        <p>Sequence:
+            <span id="sequenceText"></span> 
         </p>
         
         <button type="button" onclick="reset()">Reset</button>
+        <button type="button" onclick="reverse()">Reverse</button>
     </div>
 
     <script src="script.js" async></script>

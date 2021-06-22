@@ -1,104 +1,95 @@
 var blueScore = 0, redScore = 0;
 var numOfArrow = new Array(2);
-var score1 = new Array(2);
+var score = new Array(2);
+const sequence = [];
 var victory = false;
  
 // Loop to create 2D array using 1D array
 for (var i = 0; i < 2; i++) {
     numOfArrow[i] = new Array(5);
-    score1[i] = new Array(5);
+    score[i] = new Array(5);
 }
 
 for (var i = 0; i < 2; i++) {
     for(var j = 0; j < 5; j++){
         numOfArrow[i][j] = 0;
-        score1[i][j] = 0;
+        score[i][j] = 0;
     }
 }
 
-function add1(pot){
+function add(pot){
     if(!isGreatVic("blue") && !isGreatVic("red")){
-        var col = 0, row = pot.charCodeAt(1)-49;
-        if(pot.charAt(0) == 'r'){
-            col = 1;
-        }
+        var row = pot.charCodeAt(1)-49;
+        var col = (pot.charAt(0) == 'b')? 0 : 1;
         numOfArrow[col][row]++;
-        document.getElementById(pot).textContent = numOfArrow[col][row].toString();
+        //document.getElementById(pot).textContent = numOfArrow[col][row].toString();
+        sequence.push(pot);
+        //document.getElementById("sequenceText").innerHTML = sequence;
         updateScore();
-        compare();
+        updateMessage();
     }
 }
 
-function minus1(pot){
-    if(!isGreatVic("blue") && !isGreatVic("red")){
-        var col = 0, row = pot.charCodeAt(1)-49;
-        if(pot.charAt(0) == 'r'){
-            col = 1;
-        }
-        if(numOfArrow[col][row] > 0){
-            numOfArrow[col][row]--;
-        }
-        document.getElementById(pot).textContent = numOfArrow[col][row].toString();
+function reverse(){
+    if(sequence.length){
+        var pot = sequence.pop();
+        var row = pot.charCodeAt(1)-49;
+        var col = (pot.charAt(0) == 'b')? 0 : 1;
+        numOfArrow[col][row]--;
+        //document.getElementById(pot).textContent = numOfArrow[col][row].toString();
+        //document.getElementById("sequenceText").innerHTML = sequence;
         updateScore();
-        compare();
-    }   
-}
-
-function updateScore(){
-    var score = 0;
-    for(var i = 0; i < 2; i++){
-        for(var j = 0; j < 5; j++){
-            if(numOfArrow[i][j] <= 4){
-                if(numOfArrow[i][j] % 2 == 0){
-                    score1[i][j] = numOfArrow[i][j] * 2;
-                    score += numOfArrow[i][j] * 2;
-                }else{
-                    score1[i][j] = numOfArrow[i][j] * 2 - 1;
-                    score += numOfArrow[i][j] * 2 - 1;
-                }
-            }else{
-                score1[i][j] = numOfArrow[i][j] + 4;
-                score += numOfArrow[i][j] + 4;
-            }
-        }
-        if(i == 0){
-            blueScore = score;
-        }else{
-            redScore = score;
-        }
-        score = 0;
+        updateMessage();
     }
-    document.getElementById("blueScore").innerHTML = blueScore.toString();
-    document.getElementById("redScore").innerHTML = redScore.toString();
-    document.getElementById("blueScore1").innerHTML = score1[0][0].toString() + " " + score1[0][1].toString() + " " + score1[0][2].toString() + " " + score1[0][3].toString() + " " + score1[0][4].toString();
-    document.getElementById("redScore1").innerHTML = score1[1][0].toString() + " " + score1[1][1].toString() + " " + score1[1][2].toString() + " " + score1[1][3].toString() + " " + score1[1][4].toString();
-    
 }
 
 function reset(){
-    for(var i = 0; i < 5; i++){
-        document.getElementById("b" + (i + 1)).textContent = "0";
-        document.getElementById("r" + (i + 1)).textContent = "0";
-        numOfArrow[0][i] = 0;
-        numOfArrow[1][i] = 0;
+    for(var i = 0; i < 2; i++){
+        for(var j = 0; j < 5; j++){
+            numOfArrow[i][j] = 0;
+        }
     }
+    sequence.length = 0;
     updateScore();
-    compare();
+    updateMessage();
 }
 
+function updateScore(){
+    var pot = "", potScore = "";
+    blueScore = 0;
+    redScore = 0;
+    for(var i = 0; i < 5; i++){
+        for(var j = 0; j < 2; j++){
+            score[j][i] = numOfArrow[j][i];
+            if(numOfArrow[j][i] >= 2)   score[j][i] += 2;
+            if(numOfArrow[j][i] >= 4)   score[j][i] += 2;
+
+            pot = (j == 0)? "b" + (i+1): "r" + (i+1);
+            potScore = (j == 0)? "scoreb" + (i+1): "scorer" + (i+1);
+            document.getElementById(pot).innerHTML = numOfArrow[j][i].toString();
+            document.getElementById(potScore).innerHTML = score[j][i].toString();
+        }
+        blueScore += score[0][i];
+        redScore += score[1][i];
+    }
+    document.getElementById("blueScore").innerHTML = blueScore.toString();
+    document.getElementById("redScore").innerHTML = redScore.toString();
+    document.getElementById("sequenceText").innerHTML = sequence;   
+}
+
+//  check if any team get Great Victory
+//  parameter: string "blue" / "red"
+//  return value: boolean
 function isGreatVic(team){
     var flag = true;
-    var i = 0;
-    if(team == "red"){
-        i = 1;
-    }
+    var i = (team == "blue")? 0: 1;
     for(var j = 0; j < 5; j++){
         flag = flag && numOfArrow[i][j] >= 2;
     }
     return flag;
 }
 
-function compare(){
+function updateMessage(){
     if(isGreatVic("blue")){
         document.getElementById("teamid").textContent = "Blue Team";
         document.getElementById("teamid").style.color = 'blue';
@@ -116,9 +107,6 @@ function compare(){
             document.getElementById("teamid").textContent = "Red Team";
             document.getElementById("teamid").style.color = 'red';
             document.getElementById("resultText").textContent = " is leading.";
-        }else if(redScore == blueScore && blueScore == 0){
-            document.getElementById("resultText").textContent = "";
-            document.getElementById("teamid").textContent = ""
         }else{
             document.getElementById("resultText").textContent = "Fair.";
             document.getElementById("teamid").textContent = "";
