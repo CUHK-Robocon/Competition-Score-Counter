@@ -3,6 +3,8 @@ var numOfArrow = new Array(2);
 var score = new Array(2);
 const sequence = [];
 var victory = false;
+
+let timerInt = null;
  
 // Loop to create 2D array using 1D array
 for (var i = 0; i < 2; i++) {
@@ -112,4 +114,30 @@ function updateMessage(){
             document.getElementById("teamid").textContent = "";
         }
     }
+}
+
+function startTimer(){
+    var countDownDate = new Date().getTime() + 180 * 1000;
+    timerInt = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+
+        var minutes = parseInt(distance / 60 / 1000, 10)
+        var seconds = parseInt(distance / 1000 % 60, 10);
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+    
+        document.getElementById("timer").innerHTML = minutes + ":" + seconds;
+    
+        if (distance < 0) {
+            clearInterval(timerInt);
+            document.getElementById("timer").innerHTML = "0:00";
+            alert("Time is up!!");
+        }
+    }, 1000);
+}
+
+function resetTimer(){
+    clearInterval(timerInt);
+    document.getElementById("timer").innerHTML = "03:00";
 }

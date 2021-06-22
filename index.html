@@ -9,6 +9,15 @@
 </head>
 <body>
     <h3 style="text-align: center; padding-bottom: 10px;">Robocon 2021 Score Counter</h3>
+    <div>
+        <div style="display: inline-block; width: 75%; text-align: right;" id="timer">03:00</div>
+        <div style="display: inline-block; width: 10%;">
+            <button type="button" onclick="startTimer()">Start</button>
+        </div>
+        <div style="display: inline-block; width: 10%;">
+            <button type="button" onclick="resetTimer()">Reset</button>
+        </div>
+    </div>
     <div style="text-align:center;">
         <div style="display: inline-block; width: 39%;">
             <input placeholder="Name of Blue Team" style="color: blue; text-align: right; right: 0%;">
