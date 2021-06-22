@@ -34,6 +34,7 @@
     line-height: 50px;
     color: #fff;
     text-align: center;
+    padding: 0px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     vertical-align: middle;
     position: absolute;
@@ -42,7 +43,22 @@
     transform: translateX(-50%);
     -webkit-appearance: none;
     touch-action: manipulation;
-}  
+}
+
+button{
+    -webkit-appearance: none;
+    touch-action: manipulation;
+}
+
+body {
+    height: 100%;
+    overflow-y: hidden;
+ }
+
+ h3{
+    padding: 2px;
+    margin: 0px;
+}
 
 .blue{
     background-color: #0000FF;

@@ -8,16 +8,28 @@
     <link href="StyleSheet.css" rel="stylesheet">
 </head>
 <body>
-    <h3 style="text-align: center;">Robocon 2021 Counter</h3>
-    <h3 style="text-align: center;">
-        <span style="color: #0000FF;" id="blueScore">0</span> 
-        <span style="color: #000000;">:</span>
-        <span style="color: #FF0000;" id="redScore">0</span>
-    </h3>
-    <p style="text-align: center;">
-        <span id="teamid"></span> 
-        <span id="resultText">Fair.</span>
-    </p>
+    <h3 style="text-align: center; padding-bottom: 10px;">Robocon 2021 Score Counter</h3>
+    <div style="text-align:center;">
+        <div style="display: inline-block; width: 39%;">
+            <input placeholder="Name of Blue Team" style="color: blue; text-align: right; right: 0%;">
+        </div>
+        <div style="display: inline-block; width: 18%;">
+            <h3 style="text-align: center;">
+                <span style="color: #0000FF;" id="blueScore">0</span> 
+                <span style="color: #000000;">:</span>
+                <span style="color: #FF0000;" id="redScore">0</span>
+            </h3>
+        </div>
+        <div style="display: inline-block; width: 39%;">
+            <input placeholder="Name of Red Team" style="color: red; text-align: left;">
+        </div>
+    </div>
+    <div>
+        <p style="text-align: center;">
+            <span id="teamid"></span> 
+            <span id="resultText">Fair.</span>
+        </p>
+    </div>
 
     <div class="container">
         <div class="potset" style="left:50%; top:0; transform: translateX(-50%);">
@@ -78,7 +90,7 @@
         
     <div>
         <p>Sequence:
-            <span id="sequenceText"></span> 
+            <span id="sequenceText" style="word-wrap: break-word;"></span> 
         </p>
         
         <button type="button" onclick="reset()">Reset</button>
