@@ -17,7 +17,7 @@ https://thshek0.github.io/Robocon2021-Score-Counter/
 
 ## Authors
 
-Me :)
+Me :) @thshek0 @shekanson
 
 ## Screenshots
 
@@ -26,6 +26,10 @@ Me :)
 ## Remark
 
 This is my first project on building a website. The aim of building this website is not only to facilitate score counting, but also to give myself a challenge. The website is built with VS Code and with HTML, CSS, Javascript. With many tutorial resources on w3school and stackoverflow, the overall difficulty is not high. The trickiest part is the UI part but this can be solved by flexbox feature. 
-Future development will be combining time counting and sequence features to give a comprehensive data analysis and also "export screenshot" feature.
+
+Future development
+* combining time counting and sequence features for comprehensive data analysis
+* "export screenshot" feature
+* making website as Progressive Web App (PWA)
 
 Last update: 4 July, 2021
