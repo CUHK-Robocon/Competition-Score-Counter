@@ -44,8 +44,8 @@
 .score.red{color: #FF0000;}
 
 .pot {
-    width: 7vmin;
-    height: 7vmin;
+    width: 6vmin;
+    height: 6vmin;
     border-radius: 50%;
 
     font-size: 100%;
