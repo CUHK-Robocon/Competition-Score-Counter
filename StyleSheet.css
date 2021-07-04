@@ -1,48 +1,64 @@
 .container { 
-    height: 350px;
-    position: relative;
-    /*border: 1px solid black; */
-    padding: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+
+    height: 70vmin;
+    width: 70vmin;
+
+    border: 1px solid black; 
+    background-image: url(Untitled.png);
+    background-size: cover;
 }
 
-.potset { 
-    height: 80px;
-    width: 115px;
-    border-radius: 25px;
-    position: absolute;
-    border: 2px solid burlywood; 
-    padding: 1%; 
-    margin: 0%;
+.break {
+    flex-basis: 100%;
+    height: 6.5%;
 }
 
-.pot { 
-    height: 80px;
-    width: 55px;
-    position: absolute;
-    /*border: 3px solid orange;*/
-    padding: 0%; 
-    margin: 0%;
+.potset {
+    height: 18%;
+    width: 27%;
+    border-radius: 25%;
+    border: 1px solid black; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+.potset.blue{background-color: #a9fdfd;}
+.potset.white{background-color: #FFFFFF;}
+.potset.red{background-color: #fe9b94}
 
-.circle {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 20px;
-    line-height: 50px;
-    color: #fff;
+.score{
+    width: 48%; 
     text-align: center;
     padding: 0px;
+    margin: 0px;
+    font-size: small;
+}
+.score.blue{color: #0000FF;}
+.score.red{color: #FF0000;}
+
+.pot {
+    width: 7vmin;
+    height: 7vmin;
+    border-radius: 50%;
+
+    font-size: 100%;
+    color: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    vertical-align: middle;
-    position: absolute;
-    left:50%; 
-    bottom:0; 
-    transform: translateX(-50%);
-    -webkit-appearance: none;
-    touch-action: manipulation;
+}
+.pot.blue{
+    margin-right: 7%;
+    background-color: #0000FF;
+}
+.pot.red{
+    margin-left: 7%;
+    background-color: #FF0000;
 }
 
 button{
@@ -50,19 +66,17 @@ button{
     touch-action: manipulation;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 body {
     height: 100%;
     overflow-y: hidden;
+    position: relative;
  }
 
- h3{
+h3{
     padding: 2px;
     margin: 0px;
-}
-
-.blue{
-    background-color: #0000FF;
-}
-.red{
-    background-color: #FF0000;
 }

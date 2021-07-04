@@ -24,9 +24,7 @@ function add(pot){
         var row = pot.charCodeAt(1)-49;
         var col = (pot.charAt(0) == 'b')? 0 : 1;
         numOfArrow[col][row]++;
-        //document.getElementById(pot).textContent = numOfArrow[col][row].toString();
         sequence.push(pot);
-        //document.getElementById("sequenceText").innerHTML = sequence;
         updateScore();
         updateMessage();
     }
@@ -38,8 +36,6 @@ function reverse(){
         var row = pot.charCodeAt(1)-49;
         var col = (pot.charAt(0) == 'b')? 0 : 1;
         numOfArrow[col][row]--;
-        //document.getElementById(pot).textContent = numOfArrow[col][row].toString();
-        //document.getElementById("sequenceText").innerHTML = sequence;
         updateScore();
         updateMessage();
     }
@@ -131,7 +127,7 @@ function startTimer(){
     
         if (distance < 0) {
             clearInterval(timerInt);
-            document.getElementById("timer").innerHTML = "0:00";
+            document.getElementById("timer").innerHTML = "00:00";
             alert("Time is up!!");
         }
     }, 1000);
