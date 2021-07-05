@@ -25,7 +25,7 @@ Me :) @thshek0 @shekanson
 
 ## Remark
 
-This is my first project on building a website. The aim of building this website is not only to facilitate score counting, but also to give myself a challenge. The website is built with VS Code and with HTML, CSS, Javascript. With many tutorial resources on w3school and stackoverflow, the overall difficulty is not high. The trickiest part is the UI part but this can be solved by flexbox feature. 
+This is my first project on building a website. The aim is to not only facilitate score counting, but also challenge myself. The website is built with HTML, CSS, Javascript on VS Code. With many resources on w3school and stackoverflow, the overall difficulty is not high. The trickiest part is the UI part but this can be solved by flexbox feature. 
 
 Future development
 * combining time counting and sequence features for comprehensive data analysis
