@@ -1,4 +1,132 @@
-.container { 
+html, body{
+    overflow-x: hidden;
+}
+
+body{
+    height: 100%;
+    overflow-y: hidden;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+ }
+
+div{
+    width: 100%;
+}
+
+button{
+    -webkit-appearance: none;
+    touch-action: manipulation;
+}
+
+.header{
+    display: flex;
+    background: #C8563D;
+    color: white;
+    align-content: center;
+    align-items: flex-end;
+}
+.header h3{
+    width: 80%;
+    justify-content: left;
+}
+#toonline, #tonormal{
+    width: 20%;
+    justify-content: right;
+    height: fit-content;
+    align-content: center;
+}
+
+#timer-section{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background-color: lightgray;
+    display: none;
+}
+#timer-section #timer{
+    text-align: center;
+    margin: 0%;
+    width: 30%;
+}
+#timer-section .button-set{
+    flex: 35%;
+}
+#timer-section button, #online-timer-section button{
+    width: 48%;
+    border-radius: 25%;
+}
+#timer-section .fill{
+    flex: 35%;
+}
+
+#score-section{
+    text-align:center;
+    display: flex;
+    background-color: lightgrey;
+    display: none;
+}
+#score-section .inputblue{
+    color: blue; 
+    text-align: right; 
+    width: 40%;
+    margin: 0.5%;
+}
+#score-section .total-score{
+    text-align: center;
+    width: 20%;
+    margin: 0.3em;
+    color: black;
+}
+#score-section #blueScore{
+    color: blue;
+}
+#score-section #redScore{
+    color: red;
+}
+#score-section .inputred{
+    color: red; 
+    text-align: left; 
+    width: 40%;
+    margin: 0.5%;
+}
+
+#online-timer-section{
+    display: flex;
+    align-items: center;
+    background-color: lightgrey;
+    padding: 0.5%;
+}
+#online-timer-section #onlineScore{
+    text-align: right;
+    width: 10%;
+    margin: 0.3em;
+    color: blue;
+}
+#online-timer-section .inputblue{
+    text-align: right; 
+    width: 40%;
+    margin: 0.5%;
+    padding: 0.3em;
+}
+#online-timer-section #timer1{
+    text-align: right;
+    margin: 0.3em;
+    width: 20%;
+}
+#online-timer-section .button-set{
+    width: 30%;
+}
+
+.message p{
+    text-align: center; 
+    padding: 0%; 
+    margin: 0%;
+    background-color: lightgrey;
+}
+
+#normal-field{ 
     margin: 0 auto;
     display: flex;
     flex-direction: row;
@@ -7,11 +135,29 @@
     align-items: center;
     align-content: center;
 
-    height: 75vmin;
-    width: 75vmin;
+    height: 80vmin;
+    width: 80vmin;
 
     border: 1px solid black; 
     background-image: url(Untitled.png);
+    background-size: cover;
+    display: none;
+}
+
+#online-field{ 
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+
+    height: 70vmin;
+    width: 80vmin;
+
+    border: 1px solid black; 
+    background-image: url(onlinefield.png);
     background-size: cover;
 }
 
@@ -19,8 +165,11 @@
     flex-basis: 100%;
     height: 6.5%;
 }
+.empty-flex{
+    flex-basis: 27%;
+}
 
-.potset {
+#normal-field .potset {
     height: 18%;
     width: 27%;
     border-radius: 25%;
@@ -29,9 +178,18 @@
     flex-wrap: wrap;
     justify-content: center;
 }
-.potset.blue{background-color: #a9fdfd;}
-.potset.white{background-color: #FFFFFF;}
-.potset.red{background-color: #fe9b94}
+#online-field .potset {
+    height: 18%;
+    width: 27%;
+    border-radius: 25%;
+    border: 1px solid black; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.potset.blue{background-color: #aaffff;}
+.potset.white{background-color: #fffaf5;}
+.potset.red{background-color: #ff9a9a}
 
 .score{
     width: 48%; 
@@ -59,24 +217,4 @@
 .pot.red{
     margin-left: 6%;
     background-color: #FF0000;
-}
-
-button{
-    -webkit-appearance: none;
-    touch-action: manipulation;
-}
-
-html, body {
-    overflow-x: hidden;
-}
-
-body {
-    height: 100%;
-    overflow-y: hidden;
-    position: relative;
- }
-
-h3{
-    padding: 2px;
-    margin: 0px;
 }

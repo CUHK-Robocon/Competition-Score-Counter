@@ -23,6 +23,10 @@ Me :) @thshek0 @shekanson
 
 ![image](https://user-images.githubusercontent.com/79575934/124390831-e1fb4e80-dd1f-11eb-8694-ac2017eaa370.png)
 
+## Update
+- 5Aug,2021: Add online version of the contest
+- 4Jul,2021: First release without bug
+
 ## Remark
 
 This is my first project on building a website. The aim is to not only facilitate score counting, but also challenge myself. The website is built with HTML, CSS, Javascript on VS Code. With many resources on w3school and stackoverflow, the overall difficulty is not high. The trickiest part is the UI part but this can be solved by flexbox feature. 
@@ -32,4 +36,4 @@ Future development
 * "export screenshot" feature
 * making website as Progressive Web App (PWA)
 
-Last update: 4 July, 2021
+Last update: 5 Aug, 2021

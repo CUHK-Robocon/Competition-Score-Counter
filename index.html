@@ -8,30 +8,50 @@
     <link href="StyleSheet.css" rel="stylesheet">
 </head>
 <body>
-    <h3 style="text-align: center;">Robocon 2021 Score Counter</h3>
-    <div style="display: flex;" dir="rtl">
-        <button type="button" onclick="resetTimer()">Reset</button>
-        <button type="button" onclick="startTimer()">Start</button>
-        <div style="text-align: left;" id="timer">03:00</div>
+    <div class="header">
+        <h3>Robocon 2021 Score Counter</h3>
+        <button id="tonormal" href="#" onclick="show('normal');">Normal field</button>
+        <button id="toonline" style="display: none;" href="#" onclick="show('online');">Online field</button>
     </div>
-    <div style="text-align:center; display: flex;">
-        <input placeholder="Name of Blue Team" style="color: blue; text-align: right; width: 40%;">
-        <h3 style="text-align: center; width: 20%;">
-            <span style="color: #0000FF;" id="blueScore">0</span> 
-            <span style="color: #000000;">:</span>
-            <span style="color: #FF0000;" id="redScore">0</span>
+    
+    <div id="timer-section">
+        <div class="fill"></div>
+        <h3 id="timer">03:00</h3>
+        <div class="button-set">
+            <button type="button" onclick="startTimer()">Start</button>
+            <button type="button" onclick="resetTimer()">Reset</button>    
+        </div>
+    </div>
+
+    <div id="score-section">
+        <input class="inputblue" placeholder="Name of Blue Team">
+        <h3 class="total-score">
+            <span id="blueScore">0</span> 
+            <span>:</span>
+            <span id="redScore">0</span>
         </h3>
-        <input placeholder="Name of Red Team" style="color: red; width: 40%;">
+        <input class="inputred" placeholder="Name of Red Team">
     </div>
-    <div>
-        <p style="text-align: center; padding: 1px; margin: 0px;">
+
+    <div id="online-timer-section">
+        <input class="inputblue" placeholder="Name of Team" value="CUHK :)">
+        <h3 id="onlineScore">0</h3>
+        <h3 id="timer1">03:00</h3>
+        <div class="button-set">
+            <button type="button" onclick="startTimer()">Start</button>
+            <button type="button" onclick="resetTimer()">Reset</button>    
+        </div>
+        
+    </div>
+
+    <div class="message">
+        <p>
             <span id="teamid"></span> 
-            <span id="resultText">Fair.</span>
+            <span id="resultText">--</span>
         </p>
     </div>
     
-    
-    <div class="container">
+    <div id="normal-field">
         <div class="blue potset">
             <p class="blue score" id="scoreb1">0</p>
             <p class="red score" id="scorer1">0</p>
@@ -74,6 +94,48 @@
             <p class="blue score">b5</p>
             <p class="red score">r5</p>
         </div>
+    </div>
+
+    <div id="online-field">
+        <div class="red potset">
+            <p class="blue score" id="scoreo1">0</p>
+            <p class="red score" id="scoreo2">0</p>
+            <button class="blue pot" id="o1" onclick="add('o1')">0</button>
+            <button class="red pot" id="o2" onclick="add('o2')">0</button>
+            <p class="blue score">o1</p>
+            <p class="red score">o2</p>
+        </div>
+        <div class="empty-flex"></div>
+        <div class="empty-flex"></div>
+        <div class="break"></div>
+        <div class="white potset">
+            <p class="blue score" id="scoreo3">0</p>
+            <p class="red score" id="scoreo4">0</p>
+            <button class="blue pot" id="o3" onclick="add('o3')">0</button>
+            <button class="red pot" id="o4" onclick="add('o4')">0</button>
+            <p class="blue score">o3</p>
+            <p class="red score">o4</p>
+        </div>
+        <div class="white potset">
+            <p class="blue score" id="scoreo5">0</p>
+            <p class="red score" id="scoreo6">0</p>
+            <button class="blue pot" id="o5" onclick="add('o5')">0</button>
+            <button class="red pot" id="o6" onclick="add('o6')">0</button>
+            <p class="blue score">o5</p>
+            <p class="red score">o6</p>
+        </div>
+        <div class="empty-flex"></div>
+        <div class="break"></div>
+        <div class="blue potset">
+            <p class="blue score" id="scoreo7">0</p>
+            <p class="red score" id="scoreo8">0</p>
+            <button class="blue pot" id="o7" onclick="add('o7')">0</button>
+            <button class="red pot" id="o8" onclick="add('o8')">0</button>
+            <p class="blue score">o7</p>
+            <p class="red score">o8</p>
+        </div>
+        <div class="empty-flex"></div>
+        <div class="empty-flex"></div>
     </div>
         
     <div>
