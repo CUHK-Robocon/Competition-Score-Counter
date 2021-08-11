@@ -22,8 +22,8 @@ Me :) @thshek0 @shekanson
 ## Screenshots
 
 ![image](img\screenshot-mobile-online.png)
+![image](img\screenshot-mobile-normal.png)
 ![image](img\screenshot-laptop-online.png)
-![image](img\screenshot-laptop-normal.png)
 
 ## Update
 - 11 Aug, 2021: Apply Bootstrap 4 framework and some bug fixed

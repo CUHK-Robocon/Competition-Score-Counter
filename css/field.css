@@ -1,3 +1,7 @@
+#field .col-sm-6{
+    margin-bottom: 6px;
+}
+
 #section-online-field{
     background-image: url(../img/onlinefield.png);
     background-size: cover;
