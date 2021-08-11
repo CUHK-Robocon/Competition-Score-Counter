@@ -31,6 +31,7 @@ function checked(){
     }
 }
 
+//  pot: add 1 arrow
 function add(pot){
     if(online){
         var col = 2;
@@ -50,6 +51,7 @@ function add(pot){
     }
 }
 
+//  reverse process
 function reverse(){
     if(sequence.length){
         var pot = sequence.pop();
@@ -66,6 +68,7 @@ function reverse(){
     }
 }
 
+//  reset to init state
 function reset(){
     for(var i = 0; i < 3; i++){
         for(var j = 0; j < 8; j++){
@@ -219,7 +222,7 @@ function resetTimer(){
 
 $(function() {
     $('#tonormal').change(function() {
-        //reset();
+        reset();
         resetTimer();
         if($(this).prop('checked')){
             online = true;

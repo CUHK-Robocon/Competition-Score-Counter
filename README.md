@@ -21,11 +21,14 @@ Me :) @thshek0 @shekanson
 
 ## Screenshots
 
-![image](https://user-images.githubusercontent.com/79575934/124390831-e1fb4e80-dd1f-11eb-8694-ac2017eaa370.png)
+![image](img\screenshot-mobile-online.png)
+![image](img\screenshot-laptop-online.png)
+![image](img\screenshot-laptop-normal.png)
 
 ## Update
-- 5Aug,2021: Add online version of the contest
-- 4Jul,2021: First release without bug
+- 11 Aug, 2021: Apply Bootstrap 4 framework and some bug fixed
+-  5 Aug, 2021: Add online version of the contest
+-  4 Jul, 2021: First release without bug
 
 ## Remark
 
@@ -36,4 +39,4 @@ Future development
 * "export screenshot" feature
 * making website as Progressive Web App (PWA)
 
-Last update: 5 Aug, 2021
+Last update: 11 Aug, 2021
