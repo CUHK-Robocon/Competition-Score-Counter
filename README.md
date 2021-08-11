@@ -20,11 +20,12 @@ https://thshek0.github.io/Robocon2021-Score-Counter/
 Me :) @thshek0 @shekanson
 
 ## Screenshots
-
-![image](img\screenshot-mobile-online.png)
-![image](img\screenshot-mobile-normal.png)
-![image](img\screenshot-laptop-online.png)
-
+<div style="flex">
+  <img src="https://github.com/thshek0/Robocon2021-Score-Counter/blob/main/img/screenshot-laptop-online.png" alt="screenshot-laptop-online" width="400"/>
+  <img src="https://github.com/thshek0/Robocon2021-Score-Counter/blob/main/img/screenshot-mobile-normal.png" alt="screenshot-mobile-normal" width="200"/>
+  <img src="https://github.com/thshek0/Robocon2021-Score-Counter/blob/main/img/screenshot-mobile-online.png" alt="screenshot-mobile-online" width="200"/>
+</div>
+  
 ## Update
 - 11 Aug, 2021: Apply Bootstrap 4 framework and some bug fixed
 -  5 Aug, 2021: Add online version of the contest
