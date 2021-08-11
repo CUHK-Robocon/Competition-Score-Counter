@@ -20,6 +20,17 @@ for (var i = 0; i < 3; i++) {
     }
 }
 
+//  onload()
+function checked(){
+    var inputs = document.getElementsByTagName('input');
+
+    for (var i=0; i<inputs.length; i++)  {
+        if (inputs[i].type == 'checkbox')   {
+            inputs[i].checked = true;
+        }
+    }
+}
+
 function add(pot){
     if(online){
         var col = 2;
@@ -85,6 +96,7 @@ function updateScore(){
             onlineScore += score[2][i];
         }
         document.getElementById("onlineScore").innerHTML = onlineScore.toString();
+        document.getElementById("proScore").style.width = (onlineScore/80*100).toString()+"%";
     }else{
         blueScore = 0;
         redScore = 0;
@@ -132,37 +144,47 @@ function updateMessage(){
     if(online){
         if(onlineScore === 80){
             document.getElementById("resultText").textContent = "FULL MARK!!";
+            document.getElementsByClassName('alert')[0].className = "alert alert-success";
         }else if(isAllArrow()){
             document.getElementById("resultText").textContent = "All arrows have been used up :(";
+            document.getElementsByClassName('alert')[0].className = "alert alert-danger";
         }else if(onlineScore === 0){
             document.getElementById("resultText").textContent = "--";
+            document.getElementsByClassName('alert')[0].className = "alert alert-info";
         }else{
             document.getElementById("resultText").textContent = "Keep going!";
+            document.getElementsByClassName('alert')[0].className = "alert alert-info";
         }
     }else{
         if(isGreatVic("blue")){
             document.getElementById("teamid").textContent = "Blue Team";
             document.getElementById("teamid").style.color = 'blue';
             document.getElementById("resultText").textContent = " Great Victory!!";
+            document.getElementsByClassName('alert')[0].className = "alert alert-primary";
         }else if(isGreatVic("red")){
             document.getElementById("teamid").textContent = "Red Team";
             document.getElementById("teamid").style.color = 'red';
             document.getElementById("resultText").textContent = " Great Victory!!";
+            document.getElementsByClassName('alert')[0].className = "alert alert-danger";
         }else{
             if(blueScore > redScore){
                 document.getElementById("teamid").textContent = "Blue Team";
                 document.getElementById("teamid").style.color = 'blue';
                 document.getElementById("resultText").textContent = " is leading.";
+                document.getElementsByClassName('alert')[0].className = "alert alert-primary";
             }else if(redScore > blueScore){
                 document.getElementById("teamid").textContent = "Red Team";
                 document.getElementById("teamid").style.color = 'red';
                 document.getElementById("resultText").textContent = " is leading.";
+                document.getElementsByClassName('alert')[0].className = "alert alert-danger";
             }else if(redScore === 0){
                 document.getElementById("resultText").textContent = "--";
                 document.getElementById("teamid").textContent = "";
+                document.getElementsByClassName('alert')[0].className = "alert alert-info";
             }else{
                 document.getElementById("resultText").textContent = "Fair.";
                 document.getElementById("teamid").textContent = "";
+                document.getElementsByClassName('alert')[0].className = "alert alert-info";
             }
         }
     }
@@ -197,32 +219,34 @@ function resetTimer(){
 
 $(function() {
     $('#tonormal').change(function() {
-        reset();
+        //reset();
+        resetTimer();
         if($(this).prop('checked')){
             online = true;
             document.getElementById("section-header").style.backgroundColor='#808080';
             document.getElementById("section-online-score").style.display='block';
-            document.getElementById("section-online-field").style.display='block';
+            document.getElementById("section-online-field").style.display='flex';
             document.getElementById("section-normal-score").style.display='none';
             document.getElementById("section-normal-field").style.display='none';
+
+            var utis = document.getElementsByClassName('btn-uti');
+
+            for (var i=0; i<utis.length; i++){
+                utis[i].classList.replace("btn-primary", "btn-dark");
+            }
         }else{
             online = false;
-            document.getElementById("section-header").style.backgroundColor='#0504ff';
+            document.getElementById("section-header").style.backgroundColor='#0096ff';
             document.getElementById("section-online-score").style.display='none';
             document.getElementById("section-online-field").style.display='none';
             document.getElementById("section-normal-score").style.display='block';
-            document.getElementById("section-normal-field").style.display='block';
+            document.getElementById("section-normal-field").style.display='flex';
+           
+            var utis = document.getElementsByClassName('btn-uti');
+
+            for (var i=0; i<utis.length; i++){
+                utis[i].classList.replace("btn-dark", "btn-primary");
+            }
         }
-        
     })
 })
-
-function unchecked(){
-    var inputs = document.getElementsByTagName('input');
-
-    for (var i=0; i<inputs.length; i++)  {
-        if (inputs[i].type == 'checkbox')   {
-            inputs[i].checked = true;
-        }
-    }
-}

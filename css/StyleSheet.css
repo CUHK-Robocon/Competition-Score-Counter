@@ -1,0 +1,60 @@
+section{
+    margin-bottom: 8px;
+}
+h4, p{
+    margin-bottom: 0px;
+}
+
+#section-header{
+    background-color: grey;
+    color: white;
+    padding: 12px 0px;
+}
+#section-header #row{
+    justify-content: space-between;
+}
+
+#proScore{
+    width: 0px;
+}
+
+#section-normal-score{
+    display: none;
+    margin-bottom: 22.8px;
+}
+#section-normal-score #blueScore{
+    color: blue;
+}
+#section-normal-score #redScore{
+    color: red;
+}
+
+
+#section-timer .alert{
+    margin-bottom: 0px;
+}
+#section-timer .text-left{
+    margin-bottom: 8px;
+}
+
+
+#sequenceText{
+    word-wrap: break-word;
+}
+
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    #section-online-score{
+        margin-top: 5px;
+    }
+    #section-online-score label{
+        margin-bottom: 0px;
+    }
+    #section-timer label{
+        margin-bottom: 0px;
+    }
+    #section-timer p{
+        margin-bottom: 4px;
+    }
+}

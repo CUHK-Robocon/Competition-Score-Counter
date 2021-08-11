@@ -1,45 +1,16 @@
-#section-header{
-    background-color: grey;
-    color: white;
-    padding: 12px 0px;
-}
-#section-header #row{
-    justify-content: space-between;
-}
-#section-header h4{
-    margin-bottom: 0px;
-}
-
-
-#section-online-score{
-    margin-top: 12px;
-}
-
-
-#section-normal-score{
-    display: none;
-    margin-top: 17.4px;
-    margin-bottom: 17.4px;
-}
-#section-normal-score #blueScore{
-    color: blue;
-}
-#section-normal-score #redScore{
-    color: red;
-}
-
-
-#section-online-field .container{
-    background-image: url(onlinefield.png);
+#section-online-field{
+    background-image: url(../img/onlinefield.png);
     background-size: cover;
-    width: calc(40vh *8/7);
-    height: 40vh;
+    width: calc(55vh *8/7);
+    height: 55vh;
     padding: 0%;
     display: flex;
+    float: right;
     flex-wrap: wrap;
     justify-content: space-around;
     align-content: space-around;
 }
+
 
 #section-online-field #potseto1, #potseto2, #potseto3, #potseto4{
     height: 25%;
@@ -91,14 +62,13 @@
 
 #section-normal-field{
     display: none;
-}
-#section-normal-field .container{
-    background-image: url(Untitled.png);
+    margin-bottom: 8px;
+    background-image: url(../img/normalfield.png);
     background-size: cover;
-    width: 40vh;
-    height: 40vh;
+    width: 55vh;
+    height: 55vh;
     padding: 0%;
-    display: flex;
+    float: right;
     flex-wrap: wrap;
     justify-content: space-around;
     align-content: space-around;
@@ -145,23 +115,17 @@
 }
 
 
-#sequenceText{
-    word-wrap: break-word;
-}
-
-
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
-    #section-online-score{
-        margin-top: 5px;
+    #section-online-field{
+        width: calc(100vw - 30px);
+        height: calc((100vw - 30px)/8*7);
     }
-    #section-online-score label{
-        margin-bottom: 0px;
+    #section-normal-field{
+        width: calc(100vw - 30px);
+        height: calc(100vw - 30px);
     }
-    #section-timer label{
-        margin-bottom: 0px;
-    }
-    #section-timer p{
+    #field .col-sm-6{
         margin-bottom: 4px;
     }
 }

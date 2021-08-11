@@ -9,9 +9,10 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="StyleSheet.css">
+        <link rel="stylesheet" href="css/StyleSheet.css">
+        <link rel="stylesheet" href="css/field.css">
     </head>
-    <body onload="unchecked()">
+    <body onload="checked()">
         
         <section id="section-header">
             <div class="container">
@@ -33,23 +34,33 @@
         <section id="section-online-score">
             <div class="container">
                 <div class="row form-inline">
-                    <div class="input-group col">
+                    <div class="input-group col-xs-6 col-sm-6">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Team</span>
                         </div>
                         <input type="text" class="form-control" placeholder="Input team name here" value="CUHK :)">
                     </div>
-                    <div class="col">
-                        <label class="d-flex justify-content-start">Score</label>
-                        <h4 id="onlineScore">0</h4>
+                    <div class="col-xs-1 col-sm-1">
+                        <div class="text-left">
+                            <label class="d-flex justify-content-start">Score</label>
+                            <h4 id="onlineScore">0</h4>
+                        </div>
                     </div>
+                    <div class="col-xs-5 col-sm-5">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                    role="progressbar" id="proScore"
+                            ></div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </section>
 
         <section id="section-normal-score">
             <div class="container">
-                <div class="row form-inline">
+                <div class="row form-inline flex-nowrap">
                     <div class="input-group col-sm-5">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Blue Team</span>
@@ -64,10 +75,10 @@
                         </h4>
                     </div>
                     <div class="input-group col-sm-5">
-                        <input type="text" class="form-control" placeholder="Team B">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Red Team</span>
                         </div>
+                        <input type="text" class="form-control" placeholder="Team B">
                     </div>
                 </div>
             </div>
@@ -82,13 +93,13 @@
                             <h4 id="timer">03:00</h4>
                         </div>
                         <div class="btn-group">
-                            <button type="button" class="btn btn-dark" onclick="startTimer()">
+                            <button type="button" class="btn btn-dark btn-uti" onclick="startTimer()">
                                 Start
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
                                     <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
                                 </svg>
                             </button>
-                            <button type="button" class="btn btn-dark" onclick="resetTimer()">
+                            <button type="button" class="btn btn-dark btn-uti" onclick="resetTimer()">
                                 Reset
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
@@ -100,148 +111,151 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <p>
-                            <span id="teamid"></span> 
-                            <span id="resultText">--</span>
-                        </p>
+                        <div class="alert alert-info">
+                            <p>
+                                <span id="teamid"></span> 
+                                <span id="resultText">--</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="section-online-field">
-            <div class="container">
-                <div class="text-center" id="potseto3">
-                    <label class="score" id="scoreo3">0</label>
-                    <div class="btn-grp">
-                        <button class="btn btn-primary btn-sm" id="o5" onclick="add('o5')">0</button>
-                        <button class="btn btn-danger btn-sm" id="o6" onclick="add('o6')">0</button>
-                    </div>
-                    <label class="blue" for="o5">b3</label>
-                    <label class="red" for="o6">r3</label>
-                </div>
-                <div class="empty-flex"></div>
-                <div class="empty-flex"></div>
-                <div class="break"></div>
-                <div class="text-center" id="potseto4">
-                    <label class="score" id="scoreo4">0</label>
-                    <div class="btn-grp">
-                        <button class="btn btn-primary btn-sm" id="o7" onclick="add('o7')">0</button>
-                        <button class="btn btn-danger btn-sm" id="o8" onclick="add('o8')">0</button>
-                    </div>
-                    <label class="blue" for="o7">b4</label>
-                    <label class="red" for="o8">r4</label>
-                </div>
-                <div class="text-center" id="potseto2">
-                    <label class="score" id="scoreo2">0</label>
-                    <div class="btn-grp">
-                        <button class="btn btn-primary btn-sm" id="o3" onclick="add('o3')">0</button>
-                        <button class="btn btn-danger btn-sm" id="o4" onclick="add('o4')">0</button>
-                    </div>
-                    <label class="blue" for="o3">b2</label>
-                    <label class="red" for="o4">r2</label>
-                </div>
-                <div class="empty-flex"></div>
-                <div class="break"></div>
-                <div class="text-center" id="potseto1">
-                    <label class="score" id="scoreo1">0</label>
-                    <div class="btn-grp">
-                        <button class="btn btn-primary btn-sm" id="o1" onclick="add('o1')">0</button>
-                        <button class="btn btn-danger btn-sm" id="o2" onclick="add('o2')">0</button>
-                    </div>
-                    <label class="blue" for="o1">b1</label>
-                    <label class="red" for="o2">r1</label>
-                </div>
-                <div class="empty-flex"></div>
-                <div class="empty-flex"></div>
-            </div>
-        </section>
-
-        <section id="section-normal-field">
-            <div class="container">
-                <div class="text-center" id="potsetn1">
-                    <label class="blue" id="scoreb1">0</label>
-                    <label class="red" id="scorer1">0</label>
-                    <div class="btn-grp">
-                        <button class="btn btn-primary btn-sm" id="b1" onclick="add('b1')">0</button>
-                        <button class="btn btn-danger btn-sm" id="r1" onclick="add('r1')">0</button>
-                    </div>
-                    <label class="blue" for="b1">b1</label>
-                    <label class="red" for="r1">r1</label>
-                </div>
-                <div class="break"></div>
-                <div class="text-center" id="potsetn2">
-                    <label class="blue" id="scoreb2">0</label>
-                    <label class="red" id="scorer2">0</label>
-                    <div class="btn-grp">
-                        <button class="btn btn-primary btn-sm" id="b2" onclick="add('b2')">0</button>
-                        <button class="btn btn-danger btn-sm" id="r2" onclick="add('r2')">0</button>
-                    </div>
-                    <label class="blue" for="b2">b2</label>
-                    <label class="red" for="r2">r2</label>
-                </div>
-                <div class="text-center" id="potsetn3">
-                    <label class="blue" id="scoreb3">0</label>
-                    <label class="red" id="scorer3">0</label>
-                    <div class="btn-grp">
-                        <button class="btn btn-primary btn-sm" id="b3" onclick="add('b3')">0</button>
-                        <button class="btn btn-danger btn-sm" id="r3" onclick="add('r3')">0</button>
-                    </div>
-                    <label class="blue" for="b3">b3</label>
-                    <label class="red" for="r3">r3</label>
-                </div>
-                <div class="text-center" id="potsetn4">
-                    <label class="blue" id="scoreb4">0</label>
-                    <label class="red" id="scorer4">0</label>
-                    <div class="btn-grp">
-                        <button class="btn btn-primary btn-sm" id="b4" onclick="add('b4')">0</button>
-                        <button class="btn btn-danger btn-sm" id="r4" onclick="add('r4')">0</button>
-                    </div>
-                    <label class="blue" for="b4">b4</label>
-                    <label class="red" for="r4">r4</label>
-                </div>
-                <div class="break"></div>
-                <div class="text-center" id="potsetn5">
-                    <label class="blue" id="scoreb5">0</label>
-                    <label class="red" id="scorer5">0</label>
-                    <div class="btn-grp">
-                        <button class="btn btn-primary btn-sm" id="b5" onclick="add('b5')">0</button>
-                        <button class="btn btn-danger btn-sm" id="r5" onclick="add('r5')">0</button>
-                    </div>
-                    <label class="blue" for="b5">b5</label>
-                    <label class="red" for="r5">r5</label>
-                </div>
-            </div>
-        </section>
-
-        <section id="section-button">
-            <div class="container">
-                <div class="btn-group-sm">
-                    <button type="button" class="btn btn-dark" onclick="reset()">
-                        Reset
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
-                            <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
-                        </svg>
-                    </button>
-                    <button type="button" class="btn btn-dark" onclick="reverse()">
-                        Reverse
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
-                        </svg>
-                    </button>    
-                </div>
-            </div>
-        </section>
-
-        <section id="section-sequence">
+        <section id="field">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        <p>Sequence:
-                            <br>
-                            <span id="sequenceText">--</span> 
-                        </p>
+                    <div class="col-sm-6">
+                        <div id="section-online-field">
+                            <div class="text-center" id="potseto3">
+                                <label class="score" id="scoreo3">0</label>
+                                <div class="btn-grp">
+                                    <button class="btn btn-primary" id="o5" onclick="add('o5')">0</button>
+                                    <button class="btn btn-danger" id="o6" onclick="add('o6')">0</button>
+                                </div>
+                                <label class="blue" for="o5">b3</label>
+                                <label class="red" for="o6">r3</label>
+                            </div>
+                            <div class="empty-flex"></div>
+                            <div class="empty-flex"></div>
+                            <div class="break"></div>
+                            <div class="text-center" id="potseto4">
+                                <label class="score" id="scoreo4">0</label>
+                                <div class="btn-grp">
+                                    <button class="btn btn-primary" id="o7" onclick="add('o7')">0</button>
+                                    <button class="btn btn-danger" id="o8" onclick="add('o8')">0</button>
+                                </div>
+                                <label class="blue" for="o7">b4</label>
+                                <label class="red" for="o8">r4</label>
+                            </div>
+                            <div class="text-center" id="potseto2">
+                                <label class="score" id="scoreo2">0</label>
+                                <div class="btn-grp">
+                                    <button class="btn btn-primary" id="o3" onclick="add('o3')">0</button>
+                                    <button class="btn btn-danger" id="o4" onclick="add('o4')">0</button>
+                                </div>
+                                <label class="blue" for="o3">b2</label>
+                                <label class="red" for="o4">r2</label>
+                            </div>
+                            <div class="empty-flex"></div>
+                            <div class="break"></div>
+                            <div class="text-center" id="potseto1">
+                                <label class="score" id="scoreo1">0</label>
+                                <div class="btn-grp">
+                                    <button class="btn btn-primary" id="o1" onclick="add('o1')">0</button>
+                                    <button class="btn btn-danger" id="o2" onclick="add('o2')">0</button>
+                                </div>
+                                <label class="blue" for="o1">b1</label>
+                                <label class="red" for="o2">r1</label>
+                            </div>
+                            <div class="empty-flex"></div>
+                            <div class="empty-flex"></div>
+                        </div>
+                
+                        <div id="section-normal-field">
+                            <div class="text-center" id="potsetn1">
+                                <label class="blue" id="scoreb1">0</label>
+                                <label class="red" id="scorer1">0</label>
+                                <div class="btn-grp">
+                                    <button class="btn btn-primary" id="b1" onclick="add('b1')">0</button>
+                                    <button class="btn btn-danger" id="r1" onclick="add('r1')">0</button>
+                                </div>
+                                <label class="blue" for="b1">b1</label>
+                                <label class="red" for="r1">r1</label>
+                            </div>
+                            <div class="break"></div>
+                            <div class="text-center" id="potsetn2">
+                                <label class="blue" id="scoreb2">0</label>
+                                <label class="red" id="scorer2">0</label>
+                                <div class="btn-grp">
+                                    <button class="btn btn-primary" id="b2" onclick="add('b2')">0</button>
+                                    <button class="btn btn-danger" id="r2" onclick="add('r2')">0</button>
+                                </div>
+                                <label class="blue" for="b2">b2</label>
+                                <label class="red" for="r2">r2</label>
+                            </div>
+                            <div class="text-center" id="potsetn3">
+                                <label class="blue" id="scoreb3">0</label>
+                                <label class="red" id="scorer3">0</label>
+                                <div class="btn-grp">
+                                    <button class="btn btn-primary" id="b3" onclick="add('b3')">0</button>
+                                    <button class="btn btn-danger" id="r3" onclick="add('r3')">0</button>
+                                </div>
+                                <label class="blue" for="b3">b3</label>
+                                <label class="red" for="r3">r3</label>
+                            </div>
+                            <div class="text-center" id="potsetn4">
+                                <label class="blue" id="scoreb4">0</label>
+                                <label class="red" id="scorer4">0</label>
+                                <div class="btn-grp">
+                                    <button class="btn btn-primary" id="b4" onclick="add('b4')">0</button>
+                                    <button class="btn btn-danger" id="r4" onclick="add('r4')">0</button>
+                                </div>
+                                <label class="blue" for="b4">b4</label>
+                                <label class="red" for="r4">r4</label>
+                            </div>
+                            <div class="break"></div>
+                            <div class="text-center" id="potsetn5">
+                                <label class="blue" id="scoreb5">0</label>
+                                <label class="red" id="scorer5">0</label>
+                                <div class="btn-grp">
+                                    <button class="btn btn-primary" id="b5" onclick="add('b5')">0</button>
+                                    <button class="btn btn-danger" id="r5" onclick="add('r5')">0</button>
+                                </div>
+                                <label class="blue" for="b5">b5</label>
+                                <label class="red" for="r5">r5</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <section id="section-button">
+                                <div class="btn-group btn-group-sm">
+                                    <button type="button" class="btn btn-dark btn-uti" onclick="reset()">
+                                        Reset
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                                            <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                                        </svg>
+                                    </button>
+                                    <button type="button" class="btn btn-dark btn-uti" onclick="reverse()">
+                                        Reverse
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+                                        </svg>
+                                    </button>    
+                                </div>
+                        </section>
+                
+                        <section id="section-sequence">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>Sequence:
+                                            <br>
+                                            <span id="sequenceText">--</span> 
+                                        </p>
+                                    </div>
+                                </div>
+                        </section>
                     </div>
                 </div>
             </div>
@@ -253,6 +267,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
-        <script src="script.js" async></script>
+        <script src="js/script.js" async></script>
     </body>
 </html>
