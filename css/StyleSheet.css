@@ -1,6 +1,6 @@
 section{
     margin-top: 0px;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 }
 h4, h5, p, label{
     margin-bottom: 0px;
@@ -40,9 +40,6 @@ h4, h5, p, label{
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
-    section{
-        margin-bottom: 4px;
-    }
     #section-normal-score{
         margin-bottom: 35.3px;
     }

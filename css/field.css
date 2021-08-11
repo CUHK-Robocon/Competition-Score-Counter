@@ -64,7 +64,7 @@
 
 #section-normal-field{
     display: none;
-    margin-bottom: 8px;
+    margin-bottom: 0px;
     background-image: url(../img/normalfield.png);
     background-size: cover;
     aspect-ratio: 1/1;
