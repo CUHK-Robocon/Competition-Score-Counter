@@ -30,6 +30,9 @@ function add(pot){
     if(!isGreatVic("blue") && !isGreatVic("red") && onlineScore < 80 && !isAllArrow()){
         var row = pot.charCodeAt(1)-49;
         numOfArrow[col][row]++;
+        if(online){
+            pot = (row % 2 === 0)? 'b' + (row/2+1): 'r' + ((row+1)/2);
+        }
         sequence.push(pot);
         updateScore();
         updateMessage();
@@ -39,9 +42,13 @@ function add(pot){
 function reverse(){
     if(sequence.length){
         var pot = sequence.pop();
-        var row = pot.charCodeAt(1)-49;
-        var col = (pot.charAt(0) == 'b')? 0 : 1;
-        if(online)  col = 2;
+        if(online){
+            var row = (pot.charAt(0) == 'b')? (pot.charCodeAt(1)-49)*2 : (pot.charCodeAt(1)-49)*2+1;
+            var col = 2;
+        }else{
+            var row = pot.charCodeAt(1)-49;
+            var col = (pot.charAt(0) == 'b')? 0 : 1;
+        }
         numOfArrow[col][row]--;
         updateScore();
         updateMessage();
@@ -63,15 +70,17 @@ function updateScore(){
     var pot = "", potScore = "";
     if(online){
         onlineScore = 0;
-        for(var i = 0; i < 8; i++){
-            score[2][i] = numOfArrow[2][i];
-            if(numOfArrow[2][i] >= 2)   score[2][i] += 6;
-            if(numOfArrow[2][i] >= 4)   score[2][i] += 6;
-            if(numOfArrow[2][i] >= 6)   score[2][i] += 6;
+        for(var i = 0; i < 4; i++){
+            score[2][i] = numOfArrow[2][i*2] + numOfArrow[2][i*2+1];
+            if(numOfArrow[2][i*2] >= 1 && numOfArrow[2][i*2+1] >= 1)   score[2][i] += 6;
+            if(numOfArrow[2][i*2] >= 2 && numOfArrow[2][i*2+1] >= 2)   score[2][i] += 6;
+            if(numOfArrow[2][i*2] >= 3 && numOfArrow[2][i*2+1] >= 3)   score[2][i] += 6;
         
-            pot = "o" + (i+1);
+            pot = "o" + (i*2+1);
+            document.getElementById(pot).innerHTML = numOfArrow[2][i*2].toString();
+            pot = "o" + (i*2+2);
+            document.getElementById(pot).innerHTML = numOfArrow[2][i*2+1].toString();
             potScore = "scoreo" + (i+1);
-            document.getElementById(pot).innerHTML = numOfArrow[2][i].toString();
             document.getElementById(potScore).innerHTML = score[2][i].toString();
             onlineScore += score[2][i];
         }
@@ -104,7 +113,7 @@ function updateScore(){
 //  return value: boolean
 function isGreatVic(team){
     var flag = true;
-    var i = (team == "blue")? 0: 1;
+    var i = (team === "blue")? 0: 1;
     for(var j = 0; j < 5; j++){
         flag = flag && numOfArrow[i][j] >= 2;
     }
@@ -125,6 +134,8 @@ function updateMessage(){
             document.getElementById("resultText").textContent = "FULL MARK!!";
         }else if(isAllArrow()){
             document.getElementById("resultText").textContent = "All arrows have been used up :(";
+        }else if(onlineScore === 0){
+            document.getElementById("resultText").textContent = "--";
         }else{
             document.getElementById("resultText").textContent = "Keep going!";
         }
@@ -146,6 +157,9 @@ function updateMessage(){
                 document.getElementById("teamid").textContent = "Red Team";
                 document.getElementById("teamid").style.color = 'red';
                 document.getElementById("resultText").textContent = " is leading.";
+            }else if(redScore === 0){
+                document.getElementById("resultText").textContent = "--";
+                document.getElementById("teamid").textContent = "";
             }else{
                 document.getElementById("resultText").textContent = "Fair.";
                 document.getElementById("teamid").textContent = "";
@@ -167,12 +181,10 @@ function startTimer(){
         seconds = seconds < 10 ? "0" + seconds : seconds;
     
         document.getElementById("timer").innerHTML = minutes + ":" + seconds;
-        document.getElementById("timer1").innerHTML = minutes + ":" + seconds;
     
         if (distance < 0) {
             clearInterval(timerInt);
             document.getElementById("timer").innerHTML = "00:00";
-            document.getElementById("timer1").innerHTML = "00:00";
             alert("Time is up!!");
         }
     }, 1000);
@@ -181,27 +193,36 @@ function startTimer(){
 function resetTimer(){
     clearInterval(timerInt);
     document.getElementById("timer").innerHTML = "03:00";
-    document.getElementById("timer1").innerHTML = "03:00";
 }
 
-function show(status) {
-    reset();
-    online = (status === "online");
-    if(!online){
-        document.getElementById("normal-field").style.display='flex';
-        document.getElementById("toonline").style.display='flex';
-        document.getElementById("timer-section").style.display='flex';
-        document.getElementById("score-section").style.display='flex';
-        document.getElementById("online-field").style.display='none';
-        document.getElementById("tonormal").style.display='none';
-        document.getElementById("online-timer-section").style.display='none';
-    }else{
-        document.getElementById("online-field").style.display='flex';
-        document.getElementById("tonormal").style.display='flex';
-        document.getElementById("online-timer-section").style.display='flex';
-        document.getElementById("normal-field").style.display='none';
-        document.getElementById("toonline").style.display='none';
-        document.getElementById("timer-section").style.display='none';
-        document.getElementById("score-section").style.display='none';
+$(function() {
+    $('#tonormal').change(function() {
+        reset();
+        if($(this).prop('checked')){
+            online = true;
+            document.getElementById("section-header").style.backgroundColor='#808080';
+            document.getElementById("section-online-score").style.display='block';
+            document.getElementById("section-online-field").style.display='block';
+            document.getElementById("section-normal-score").style.display='none';
+            document.getElementById("section-normal-field").style.display='none';
+        }else{
+            online = false;
+            document.getElementById("section-header").style.backgroundColor='#0504ff';
+            document.getElementById("section-online-score").style.display='none';
+            document.getElementById("section-online-field").style.display='none';
+            document.getElementById("section-normal-score").style.display='block';
+            document.getElementById("section-normal-field").style.display='block';
+        }
+        
+    })
+})
+
+function unchecked(){
+    var inputs = document.getElementsByTagName('input');
+
+    for (var i=0; i<inputs.length; i++)  {
+        if (inputs[i].type == 'checkbox')   {
+            inputs[i].checked = true;
+        }
     }
 }

@@ -1,152 +1,258 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>Robocon 2021 Score Counter</title>
-    <link href="StyleSheet.css" rel="stylesheet">
-</head>
-<body>
-    <div class="header">
-        <h3>Robocon 2021 Score Counter</h3>
-        <button id="tonormal" href="#" onclick="show('normal');">Normal field</button>
-        <button id="toonline" style="display: none;" href="#" onclick="show('online');">Online field</button>
-    </div>
-    
-    <div id="timer-section">
-        <div class="fill"></div>
-        <h3 id="timer">03:00</h3>
-        <div class="button-set">
-            <button type="button" onclick="startTimer()">Start</button>
-            <button type="button" onclick="resetTimer()">Reset</button>    
-        </div>
-    </div>
+    <head>
+        <title>Robocon 2021 Score Counter</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <div id="score-section">
-        <input class="inputblue" placeholder="Name of Blue Team">
-        <h3 class="total-score">
-            <span id="blueScore">0</span> 
-            <span>:</span>
-            <span id="redScore">0</span>
-        </h3>
-        <input class="inputred" placeholder="Name of Red Team">
-    </div>
-
-    <div id="online-timer-section">
-        <input class="inputblue" placeholder="Name of Team" value="CUHK :)">
-        <h3 id="onlineScore">0</h3>
-        <h3 id="timer1">03:00</h3>
-        <div class="button-set">
-            <button type="button" onclick="startTimer()">Start</button>
-            <button type="button" onclick="resetTimer()">Reset</button>    
-        </div>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="StyleSheet.css">
+    </head>
+    <body onload="unchecked()">
         
-    </div>
+        <section id="section-header">
+            <div class="container">
+                <div class="row form-inline d-flex justify-content-between">
+                    <div class="col-md-8">
+                        <h4>Robocon 2021 Score Counter</h4>
+                    </div>
+                    <div class="col-md-2 offset-md-2">
+                        <input id="tonormal" data-size="sm"
+                                type="checkbox" checked data-toggle="toggle" 
+                                data-on="Online" data-off="Normal" 
+                                data-onstyle="secondary" data-offstyle="primary"
+                                >
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <div class="message">
-        <p>
-            <span id="teamid"></span> 
-            <span id="resultText">--</span>
-        </p>
-    </div>
-    
-    <div id="normal-field">
-        <div class="blue potset">
-            <p class="blue score" id="scoreb1">0</p>
-            <p class="red score" id="scorer1">0</p>
-            <button class="blue pot" id="b1" onclick="add('b1')">0</button>
-            <button class="red pot" id="r1" onclick="add('r1')">0</button>
-            <p class="blue score">b1</p>
-            <p class="red score">r1</p>
-        </div>
-        <div class="break"></div>
-        <div class="white potset">
-            <p class="blue score" id="scoreb2">0</p>
-            <p class="red score" id="scorer2">0</p>
-            <button class="blue pot" id="b2" onclick="add('b2')">0</button>
-            <button class="red pot" id="r2" onclick="add('r2')">0</button>
-            <p class="blue score">b2</p>
-            <p class="red score">r2</p>
-        </div>
-        <div class="white potset">
-            <p class="blue score" id="scoreb3">0</p>
-            <p class="red score" id="scorer3">0</p>
-            <button class="blue pot" id="b3" onclick="add('b3')">0</button>
-            <button class="red pot" id="r3" onclick="add('r3')">0</button>
-            <p class="blue score">b3</p>
-            <p class="red score">r3</p>
-        </div>
-        <div class="white potset">
-            <p class="blue score" id="scoreb4">0</p>
-            <p class="red score" id="scorer4">0</p>
-            <button class="blue pot" id="b4" onclick="add('b4')">0</button>
-            <button class="red pot" id="r4" onclick="add('r4')">0</button>
-            <p class="blue score">b4</p>
-            <p class="red score">r4</p>
-        </div>
-        <div class="break"></div>
-        <div class="red potset">
-            <p class="blue score" id="scoreb5">0</p>
-            <p class="red score" id="scorer5">0</p>
-            <button class="blue pot" id="b5" onclick="add('b5')">0</button>
-            <button class="red pot" id="r5" onclick="add('r5')">0</button>
-            <p class="blue score">b5</p>
-            <p class="red score">r5</p>
-        </div>
-    </div>
+        <section id="section-online-score">
+            <div class="container">
+                <div class="row form-inline">
+                    <div class="input-group col">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Team</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Input team name here" value="CUHK :)">
+                    </div>
+                    <div class="col">
+                        <label class="d-flex justify-content-start">Score</label>
+                        <h4 id="onlineScore">0</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <div id="online-field">
-        <div class="red potset">
-            <p class="blue score" id="scoreo1">0</p>
-            <p class="red score" id="scoreo2">0</p>
-            <button class="blue pot" id="o1" onclick="add('o1')">0</button>
-            <button class="red pot" id="o2" onclick="add('o2')">0</button>
-            <p class="blue score">o1</p>
-            <p class="red score">o2</p>
-        </div>
-        <div class="empty-flex"></div>
-        <div class="empty-flex"></div>
-        <div class="break"></div>
-        <div class="white potset">
-            <p class="blue score" id="scoreo3">0</p>
-            <p class="red score" id="scoreo4">0</p>
-            <button class="blue pot" id="o3" onclick="add('o3')">0</button>
-            <button class="red pot" id="o4" onclick="add('o4')">0</button>
-            <p class="blue score">o3</p>
-            <p class="red score">o4</p>
-        </div>
-        <div class="white potset">
-            <p class="blue score" id="scoreo5">0</p>
-            <p class="red score" id="scoreo6">0</p>
-            <button class="blue pot" id="o5" onclick="add('o5')">0</button>
-            <button class="red pot" id="o6" onclick="add('o6')">0</button>
-            <p class="blue score">o5</p>
-            <p class="red score">o6</p>
-        </div>
-        <div class="empty-flex"></div>
-        <div class="break"></div>
-        <div class="blue potset">
-            <p class="blue score" id="scoreo7">0</p>
-            <p class="red score" id="scoreo8">0</p>
-            <button class="blue pot" id="o7" onclick="add('o7')">0</button>
-            <button class="red pot" id="o8" onclick="add('o8')">0</button>
-            <p class="blue score">o7</p>
-            <p class="red score">o8</p>
-        </div>
-        <div class="empty-flex"></div>
-        <div class="empty-flex"></div>
-    </div>
-        
-    <div>
-        <button type="button" onclick="reset()">Reset</button>
-        <button type="button" onclick="reverse()">Reverse</button>
-        <p>Sequence:
-            <span id="sequenceText" style="word-wrap: break-word;"></span> 
-        </p>        
-    </div>
+        <section id="section-normal-score">
+            <div class="container">
+                <div class="row form-inline">
+                    <div class="input-group col-sm-5">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Blue Team</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Team A">
+                    </div>
+                    <div class="col-sm-2 text-center">
+                        <h4 id="normalScore">
+                            <span id="blueScore">0</span> 
+                            <span>:</span>
+                            <span id="redScore">0</span>
+                        </h4>
+                    </div>
+                    <div class="input-group col-sm-5">
+                        <input type="text" class="form-control" placeholder="Team B">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Red Team</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <script src="script.js" async></script>
-</body>
+        <section id="section-timer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 offset-md-6 form-inline d-flex justify-content-between">
+                        <div class="text-left">
+                            <label class="d-flex justify-content-start">Timer</label>
+                            <h4 id="timer">03:00</h4>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-dark" onclick="startTimer()">
+                                Start
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
+                                    <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
+                                </svg>
+                            </button>
+                            <button type="button" class="btn btn-dark" onclick="resetTimer()">
+                                Reset
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                                  </svg>
+                            </button>    
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p>
+                            <span id="teamid"></span> 
+                            <span id="resultText">--</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <section id="section-online-field">
+            <div class="container">
+                <div class="text-center" id="potseto3">
+                    <label class="score" id="scoreo3">0</label>
+                    <div class="btn-grp">
+                        <button class="btn btn-primary btn-sm" id="o5" onclick="add('o5')">0</button>
+                        <button class="btn btn-danger btn-sm" id="o6" onclick="add('o6')">0</button>
+                    </div>
+                    <label class="blue" for="o5">b3</label>
+                    <label class="red" for="o6">r3</label>
+                </div>
+                <div class="empty-flex"></div>
+                <div class="empty-flex"></div>
+                <div class="break"></div>
+                <div class="text-center" id="potseto4">
+                    <label class="score" id="scoreo4">0</label>
+                    <div class="btn-grp">
+                        <button class="btn btn-primary btn-sm" id="o7" onclick="add('o7')">0</button>
+                        <button class="btn btn-danger btn-sm" id="o8" onclick="add('o8')">0</button>
+                    </div>
+                    <label class="blue" for="o7">b4</label>
+                    <label class="red" for="o8">r4</label>
+                </div>
+                <div class="text-center" id="potseto2">
+                    <label class="score" id="scoreo2">0</label>
+                    <div class="btn-grp">
+                        <button class="btn btn-primary btn-sm" id="o3" onclick="add('o3')">0</button>
+                        <button class="btn btn-danger btn-sm" id="o4" onclick="add('o4')">0</button>
+                    </div>
+                    <label class="blue" for="o3">b2</label>
+                    <label class="red" for="o4">r2</label>
+                </div>
+                <div class="empty-flex"></div>
+                <div class="break"></div>
+                <div class="text-center" id="potseto1">
+                    <label class="score" id="scoreo1">0</label>
+                    <div class="btn-grp">
+                        <button class="btn btn-primary btn-sm" id="o1" onclick="add('o1')">0</button>
+                        <button class="btn btn-danger btn-sm" id="o2" onclick="add('o2')">0</button>
+                    </div>
+                    <label class="blue" for="o1">b1</label>
+                    <label class="red" for="o2">r1</label>
+                </div>
+                <div class="empty-flex"></div>
+                <div class="empty-flex"></div>
+            </div>
+        </section>
+
+        <section id="section-normal-field">
+            <div class="container">
+                <div class="text-center" id="potsetn1">
+                    <label class="blue" id="scoreb1">0</label>
+                    <label class="red" id="scorer1">0</label>
+                    <div class="btn-grp">
+                        <button class="btn btn-primary btn-sm" id="b1" onclick="add('b1')">0</button>
+                        <button class="btn btn-danger btn-sm" id="r1" onclick="add('r1')">0</button>
+                    </div>
+                    <label class="blue" for="b1">b1</label>
+                    <label class="red" for="r1">r1</label>
+                </div>
+                <div class="break"></div>
+                <div class="text-center" id="potsetn2">
+                    <label class="blue" id="scoreb2">0</label>
+                    <label class="red" id="scorer2">0</label>
+                    <div class="btn-grp">
+                        <button class="btn btn-primary btn-sm" id="b2" onclick="add('b2')">0</button>
+                        <button class="btn btn-danger btn-sm" id="r2" onclick="add('r2')">0</button>
+                    </div>
+                    <label class="blue" for="b2">b2</label>
+                    <label class="red" for="r2">r2</label>
+                </div>
+                <div class="text-center" id="potsetn3">
+                    <label class="blue" id="scoreb3">0</label>
+                    <label class="red" id="scorer3">0</label>
+                    <div class="btn-grp">
+                        <button class="btn btn-primary btn-sm" id="b3" onclick="add('b3')">0</button>
+                        <button class="btn btn-danger btn-sm" id="r3" onclick="add('r3')">0</button>
+                    </div>
+                    <label class="blue" for="b3">b3</label>
+                    <label class="red" for="r3">r3</label>
+                </div>
+                <div class="text-center" id="potsetn4">
+                    <label class="blue" id="scoreb4">0</label>
+                    <label class="red" id="scorer4">0</label>
+                    <div class="btn-grp">
+                        <button class="btn btn-primary btn-sm" id="b4" onclick="add('b4')">0</button>
+                        <button class="btn btn-danger btn-sm" id="r4" onclick="add('r4')">0</button>
+                    </div>
+                    <label class="blue" for="b4">b4</label>
+                    <label class="red" for="r4">r4</label>
+                </div>
+                <div class="break"></div>
+                <div class="text-center" id="potsetn5">
+                    <label class="blue" id="scoreb5">0</label>
+                    <label class="red" id="scorer5">0</label>
+                    <div class="btn-grp">
+                        <button class="btn btn-primary btn-sm" id="b5" onclick="add('b5')">0</button>
+                        <button class="btn btn-danger btn-sm" id="r5" onclick="add('r5')">0</button>
+                    </div>
+                    <label class="blue" for="b5">b5</label>
+                    <label class="red" for="r5">r5</label>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-button">
+            <div class="container">
+                <div class="btn-group-sm">
+                    <button type="button" class="btn btn-dark" onclick="reset()">
+                        Reset
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                            <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                        </svg>
+                    </button>
+                    <button type="button" class="btn btn-dark" onclick="reverse()">
+                        Reverse
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+                        </svg>
+                    </button>    
+                </div>
+            </div>
+        </section>
+
+        <section id="section-sequence">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Sequence:
+                            <br>
+                            <span id="sequenceText">--</span> 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+        <script src="script.js" async></script>
+    </body>
 </html>
