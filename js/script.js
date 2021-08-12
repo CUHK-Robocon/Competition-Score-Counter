@@ -22,7 +22,7 @@ for (var i = 0; i < 3; i++) {
 }
 
 //  onload()
-$( document ).ready(function(){
+$(document).ready(function(){
     var inputs = document.getElementsByTagName('input');
 
     for (var i=0; i<inputs.length; i++)  {
@@ -30,6 +30,9 @@ $( document ).ready(function(){
             inputs[i].checked = true;
         }
     }
+    
+    $("#section-online-field").height($("#section-online-field").width *7/8);
+
 });
 
 //  pot: add 1 arrow
