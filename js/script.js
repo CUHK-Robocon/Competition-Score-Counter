@@ -256,6 +256,7 @@ $(function() {
             document.getElementById("section-online-field").style.display='none';
             document.getElementById("section-normal-score").style.display='block';
             document.getElementById("section-normal-field").style.display='flex';
+            $("#section-normal-field").height($("#section-normal-field").width()); 
            
             var utis = document.getElementsByClassName('btn-uti');
 
