@@ -1,9 +1,10 @@
 var blueScore = 0, redScore = 0, onlineScore = 0;
 var numOfArrow = new Array(3);
 var score = new Array(3);
-const sequence = [];
+var sequence = [];
 var victory = false;
 var online = true;
+var distance = 180000, tablecnt = 1;
 
 let timerInt = null;
  
@@ -45,7 +46,11 @@ function add(pot){
         if(online){
             pot = (row % 2 === 0)? 'b' + (row/2+1): 'r' + ((row+1)/2);
         }
-        sequence.push(pot);
+        sequence.push([tablecnt, pot, 180-parseInt(distance / 1000, 10)]);
+        var markup = "<tr id='row" + tablecnt + "'><th scope='row'>" + tablecnt + "</th><td>" + sequence[tablecnt - 1][1] + "</td><td>" + sequence[tablecnt - 1][2] + "</td></tr>";
+        $("#sqtbody").append(markup);
+        tablecnt++;
+
         updateScore();
         updateMessage();
     }
@@ -54,7 +59,8 @@ function add(pot){
 //  reverse process
 function reverse(){
     if(sequence.length){
-        var pot = sequence.pop();
+        var pot = sequence.pop()[1];
+        tablecnt--;
         if(online){
             var row = (pot.charAt(0) == 'b')? (pot.charCodeAt(1)-49)*2 : (pot.charCodeAt(1)-49)*2+1;
             var col = 2;
@@ -63,6 +69,7 @@ function reverse(){
             var col = (pot.charAt(0) == 'b')? 0 : 1;
         }
         numOfArrow[col][row]--;
+        $("#row" + tablecnt).remove();
         updateScore();
         updateMessage();
     }
@@ -78,6 +85,7 @@ function reset(){
     sequence.length = 0;
     updateScore();
     updateMessage();
+    $("#sqtbody").children("tr").remove();
 }
 
 function updateScore(){
@@ -119,8 +127,7 @@ function updateScore(){
         }
         document.getElementById("blueScore").innerHTML = blueScore.toString();
         document.getElementById("redScore").innerHTML = redScore.toString();
-    }
-    document.getElementById("sequenceText").innerHTML = sequence;   
+    }  
 }
 
 //  check if any team get Great Victory
@@ -198,7 +205,7 @@ function startTimer(){
     var countDownDate = new Date().getTime() + 180 * 1000;
     timerInt = setInterval(function() {
         var now = new Date().getTime();
-        var distance = countDownDate - now;
+        distance = countDownDate - now;
 
         var minutes = parseInt(distance / 60 / 1000, 10)
         var seconds = parseInt(distance / 1000 % 60, 10);

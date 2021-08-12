@@ -126,7 +126,12 @@
         <section id="field">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-6 d-flex justify-content-center">
+                    <div class="col-sm-6 d-flex justify-content-center flex-wrap">
+                        <div class="row">
+                            <div class="col-md-12">
+                                
+                            
+                        
                         <div id="section-online-field">
                             <div class="text-center" id="potseto3">
                                 <label class="score" id="scoreo3">0</label>
@@ -228,8 +233,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        <section id="section-button">
+                        </div>
+                        <div class="row">
+                            <section id="section-button">
                                 <div class="btn-group btn-group-sm">
                                     <button type="button" class="btn btn-dark btn-uti" onclick="reset()">
                                         Reset
@@ -246,14 +252,26 @@
                                     </button>    
                                 </div>
                         </section>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6">
+                        
                 
                         <section id="section-sequence">
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <p>Sequence:
-                                            <br>
-                                            <span id="sequenceText">--</span> 
-                                        </p>
+                                    <div class="col-md-6">
+                                        <table class="table table-striped table-sm">
+                                            <thead>
+                                              <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Pot</th>
+                                                <th scope="col">Time</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody id="sqtbody">
+                                            </tbody>
+                                          </table>
                                     </div>
                                 </div>
                         </section>
