@@ -86,6 +86,7 @@ function reset(){
     updateScore();
     updateMessage();
     $("#sqtbody").children("tr").remove();
+    tablecnt = 1;
 }
 
 function updateScore(){
