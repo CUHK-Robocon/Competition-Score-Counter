@@ -31,7 +31,8 @@ $(document).ready(function(){
         }
     }
 
-    $("#section-online-field").height($("#section-online-field").width() *7/8);
+    $("#section-online-field").height($("#section-online-field").width()*7/8);
+    $("#section-normal-field").height($("#section-normal-field").width());
 
 });
 
