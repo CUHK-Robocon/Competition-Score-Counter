@@ -22,7 +22,7 @@ for (var i = 0; i < 3; i++) {
 }
 
 //  onload()
-function checked(){
+$( document ).ready(function(){
     var inputs = document.getElementsByTagName('input');
 
     for (var i=0; i<inputs.length; i++)  {
@@ -30,7 +30,7 @@ function checked(){
             inputs[i].checked = true;
         }
     }
-}
+});
 
 //  pot: add 1 arrow
 function add(pot){
