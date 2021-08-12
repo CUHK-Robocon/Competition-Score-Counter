@@ -30,8 +30,8 @@ $(document).ready(function(){
             inputs[i].checked = true;
         }
     }
-    
-    $("#section-online-field").height($("#section-online-field").width *7/8);
+
+    $("#section-online-field").height($("#section-online-field").width() *7/8);
 
 });
 
