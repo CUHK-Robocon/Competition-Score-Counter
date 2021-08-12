@@ -1,4 +1,4 @@
-section{
+header, section, footer{
     margin-top: 0px;
     margin-bottom: 6px;
 }
@@ -12,6 +12,13 @@ h4, h5, p, label{
     padding: 12px 0px;
 }
 
+
+#section-online-score label{
+    padding-right: 1rem;
+}
+.progress{
+    width: 100%;
+}
 #proScore{
     width: 0px;
 }
@@ -44,7 +51,7 @@ h4, h5, p, label{
         margin-bottom: 4px;
     }
     #section-normal-score{
-        margin-bottom: 35.4667px;
+        margin-bottom: 19.4667px;
     }
     .table-wrapper {
         max-height: none;

@@ -12,7 +12,7 @@
     </head>
     <body>
         
-        <section id="section-header">
+        <header id="section-header">
             <div class="container">
                 <div class="row">
                     <div class="col-12 d-flex justify-content-between">
@@ -24,24 +24,22 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </header>
 
         <section id="section-online-score">
             <div class="container">
                 <div class="row form-inline">
-                    <div class="input-group col-md-6">
+                    <div class="input-group col-sm-6">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Team</span>
                         </div>
                         <input type="text" class="form-control" placeholder="Input team name here" value="CUHK :)">
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-sm-6 d-flex flex-nowrap align-items-center">
                         <div>
-                            <label class="d-flex justify-content-start">Score</label>
+                            <label>Score</label>
                             <h4 id="onlineScore">0</h4>
                         </div>
-                    </div>
-                    <div class="col-md-5">
                         <div class="progress">
                             <div class="progress-bar bg-dark progress-bar-striped progress-bar-animated" 
                                     role="progressbar" id="proScore"
@@ -81,8 +79,8 @@
         <section id="section-timer">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 offset-md-6 form-inline d-flex justify-content-between">
-                        <div class="text-left">
+                    <div class="col-sm-6 offset-sm-6 form-inline d-flex justify-content-between">
+                        <div>
                             <label class="d-flex justify-content-start">Timer</label>
                             <h4 id="timer">03:00</h4>
                         </div>
@@ -109,7 +107,7 @@
         <section id="section-message">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12 text-center">
+                    <div class="col-12 text-center">
                         <div class="alert alert-info">
                             <p>
                                 <span id="teamid"></span> 
