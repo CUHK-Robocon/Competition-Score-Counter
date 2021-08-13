@@ -33,6 +33,7 @@ $(document).ready(function(){
 
     $("#section-online-field").height($("#section-online-field").width()*7/8);
     $("#section-normal-field").height($("#section-normal-field").width());
+    $("#section-normal-field").hide();
 
 });
 
@@ -256,8 +257,7 @@ $(function() {
             document.getElementById("section-online-score").style.display='none';
             document.getElementById("section-online-field").style.display='none';
             document.getElementById("section-normal-score").style.display='block';
-            document.getElementById("section-normal-field").style.display='flex';
-            $("#section-normal-field").height($("#section-normal-field").width()); 
+            document.getElementById("section-normal-field").style.display='flex'; 
            
             var utis = document.getElementsByClassName('btn-uti');
 

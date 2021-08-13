@@ -18,7 +18,7 @@
     aspect-ratio: 8/7;
 }
 #section-normal-field{
-    display: none;
+    display: flex;
     background-image: url(../img/normalfield.png);
     max-width: 55vh;
     aspect-ratio: 1/1;
