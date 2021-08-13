@@ -230,6 +230,7 @@ function startTimer(){
 function resetTimer(){
     clearInterval(timerInt);
     document.getElementById("timer").innerHTML = "03:00";
+    distance = 180000;
 }
 
 $(function() {
