@@ -2,10 +2,9 @@ var blueScore = 0, redScore = 0, onlineScore = 0;
 var numOfArrow = new Array(3);
 var score = new Array(3);
 var sequence = [];
-var victory = false;
-var distance = 180000, timerInt = null;
 
-var timer_start = false, online = true;
+var distance = 180000, timerInt = null;
+var timer_start = false, online = true, endgame = false;
 
 // Loop to create 2D array using 1D array
 for (var i = 0; i < 3; i++) {
@@ -22,13 +21,14 @@ for (var i = 0; i < 3; i++) {
 
 //  onload()
 $(document).ready(function () {
+    //  default online mode
     var inputs = document.getElementsByTagName('input');
     for (var i = 0; i < inputs.length; i++) {
         if (inputs[i].type == 'checkbox') {
             inputs[i].checked = true;
         }
     }
-
+    //   adjust size of field
     $("#section-online-field").height($("#section-online-field").width() * 7 / 8);
     $("#section-normal-field").height($("#section-normal-field").width());
     $("#section-normal-field").hide();
@@ -53,14 +53,16 @@ function updateAll() {
         $('#reverse-button').attr('disabled', 'disabled');
     }
 
-    endgame = isGreatVic("blue") || isGreatVic("red") || onlineScore === 80 || isAllArrow();
-    if (timer_start && endgame) {
-        stopTimer();
-    }
+    endgame = isGreatVic("blue") || isGreatVic("red") || isAllArrow();
     if(endgame){
+        if (timer_start){
+            stopTimer();
+        }
         $('#start-button').attr('disabled', 'disabled');
+        $('#section-online-field button, #section-normal-field button').attr('disabled', 'disabled');
     }else{
         $('#start-button').removeAttr('disabled');
+        $('#section-online-field button, #section-normal-field button').removeAttr('disabled');
     }
 }
 
@@ -72,15 +74,13 @@ function add(pot) {
         var col = (pot.charAt(0) == 'b') ? 0 : 1;
     }
 
-    if (!isGreatVic("blue") && !isGreatVic("red") && onlineScore < 80 && !isAllArrow()) {
-        var row = pot.charCodeAt(1) - 49;
-        numOfArrow[col][row]++;
-        if (online) {
-            pot = (row % 2 === 0) ? 'b' + (row / 2 + 1) : 'r' + ((row + 1) / 2);
-        }
-        appendTable(pot);
-        updateAll();
+    var row = pot.charCodeAt(1) - 49;
+    numOfArrow[col][row]++;
+    if (online) {
+        pot = (row % 2 === 0) ? 'b' + (row / 2 + 1) : 'r' + ((row + 1) / 2);
     }
+    appendTable(pot);
+    updateAll();
 }
 
 //  reverse process
