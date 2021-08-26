@@ -9,7 +9,7 @@ Calculating scores with number of arrows might be difficult. This score counter 
 * Custom "team name" feature (for recording result with screenshot)
 * "Reverse" feature (for mistakenly add arrow to pot)
 * Message and score shown (for leading team and Great Victory)
-* Sequence feature (for recording arrow shooting order of each team)
+* Sequence table feature (for recording arrow shooting time)
 
 ## Getting Started
 
@@ -27,6 +27,7 @@ Me :) @thshek0 @shekanson
 </div>
   
 ## Update
+- 26 Aug, 2021: Add 'pause timer feature' and 'instruction' modal
 - 11 Aug, 2021: Apply Bootstrap 4 framework and some bug fixed
 -  5 Aug, 2021: Add online version of the contest
 -  4 Jul, 2021: First release without bug
@@ -40,4 +41,4 @@ Future development
 * "export screenshot" feature
 * making website as Progressive Web App (PWA)
 
-Last update: 11 Aug, 2021
+Last update: 26 Aug, 2021
