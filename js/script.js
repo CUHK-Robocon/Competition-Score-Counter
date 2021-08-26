@@ -52,6 +52,16 @@ function updateAll() {
     } else {
         $('#reverse-button').attr('disabled', 'disabled');
     }
+
+    endgame = isGreatVic("blue") || isGreatVic("red") || onlineScore === 80 || isAllArrow();
+    if (timer_start && endgame) {
+        stopTimer();
+    }
+    if(endgame){
+        $('#start-button').attr('disabled', 'disabled');
+    }else{
+        $('#start-button').removeAttr('disabled');
+    }
 }
 
 //  pot: add 1 arrow
