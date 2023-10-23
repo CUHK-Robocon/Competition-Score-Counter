@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Robocon 2023 Score Counter</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
+        rel="stylesheet">
+    <link rel="stylesheet" href="StyleSheet.css">
+</head>
+
+<body>
+
+    <header id="section-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-between">
+                    <h5>Robocon 2023 Score Counter
+                        <a href="#" data-toggle="modal" data-target="#instrModal">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-question-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path
+                                    d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+                            </svg>
+                        </a>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="modal fade" id="instrModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Instruction</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ol>
+                        <li>Input team name (optional)</li>
+                        <li>Click <strong>Start</strong> button to start timing</li>
+                        <li><strong>Tap</strong> pole to indicate pole scored</li>
+                    </ol>
+                    <p>Enjoyyyyyy!!! :)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="section-normal-score">
+        <div class="container">
+            <div class="row form-inline flex-nowrap">
+                <div class="input-group col-sm-5">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Blue Team</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Team A">
+                </div>
+                <div class="col-sm-2 text-center">
+                    <h4 id="normalScore">
+                        <span id="blueScore">0</span>
+                        <span>:</span>
+                        <span id="redScore">0</span>
+                    </h4>
+                </div>
+                <div class="input-group col-sm-5">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Red Team</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Team B">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-timer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 offset-sm-6 form-inline d-flex justify-content-between">
+                    <div>
+                        <label class="d-flex justify-content-start">Timer</label>
+                        <h4 id="timer">03:00</h4>
+                    </div>
+                    <div id="start-button-set" class="btn-group">
+                        <button type="button" id="start-button" class="btn btn-dark btn-uti" onclick="startTimer()">
+                            Start
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-play" viewBox="0 0 16 16">
+                                <path
+                                    d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" />
+                            </svg>
+                        </button>
+                        <button type="button" class="btn btn-dark btn-uti" onclick="resetAll()">
+                            Reset
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z" />
+                                <path
+                                    d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="pause-button-set" class="btn-group">
+                        <button type="button" class="btn btn-dark btn-uti" onclick="stopTimer()">
+                            Pause
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pause" viewBox="0 0 16 16">
+                                <path
+                                    d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z" />
+                            </svg>
+                        </button>
+                        <button type="button" class="btn btn-dark btn-uti" onclick="resetAll()">
+                            Reset
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z" />
+                                <path
+                                    d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-message">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="alert alert-info">
+                        <p>
+                            <span id="teamid"></span>
+                            <span id="resultText">--</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="field">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 d-flex justify-content-center align-items-start flex-wrap">
+                    <div id="section-normal-field">
+                        <div class="break"></div>
+                        <div class="text-center">
+                            <button class="btn pole btn-light" id="0a" onclick="add('0a')">&nbsp;</button>
+                        </div>
+                        <div class="text-center"><button hidden class="btn">&nbsp;</button></div>
+                        <div class="text-center">
+                            <button class="btn pole btn-light" id="1a" onclick="add('1a')">&nbsp;</button>
+                        </div>
+                        <div class="break"></div>
+
+                        <div class="text-center">
+                            <button class="btn pole btn-light" id="2a" onclick="add('2a')">&nbsp;</button>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn pole btn-light" id="2b" onclick="add('2b')">&nbsp;</button>
+                        </div>
+
+                        <div class="break"></div>
+
+                        <div class="text-center">
+                            <button class="btn pole btn-light" id="0b" onclick="add('0b')">&nbsp;</button>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn pole btn-light" id="3" onclick="add('3')">&nbsp;</button>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn pole btn-light" id="1b" onclick="add('1b')">&nbsp;</button>
+                        </div>
+
+                        <div class="break"></div>
+
+                        <div class="text-center">
+                            <button class="btn pole btn-light" id="2c" onclick="add('2c')">&nbsp;</button>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn pole btn-light" id="2d" onclick="add('2d')">&nbsp;</button>
+                        </div>
+
+                        <div class="break"></div>
+
+                        <div class="text-center">
+                            <button class="btn pole btn-light" id="0c" onclick="add('0c')">&nbsp;</button>
+                        </div>
+                        <div class="text-center"><button hidden class="btn">&nbsp;</button></div>
+                        <div class="text-center">
+                            <button class="btn pole btn-light" id="1c" onclick="add('1c')">&nbsp;</button>
+                        </div>
+                        <div class="break"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center text-lg-start bg-light text-muted">
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            Last update: 23 Jun 2023
+            <a class="text-reset fw-bold" href="https://github.com/thshek0/Robocon2021-Score-Counter"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                </svg></a>
+        </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+    <script src="script.js" async></script>
+</body>
+
+</html>

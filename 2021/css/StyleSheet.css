@@ -1,0 +1,160 @@
+header, section, footer{
+    margin-top: 0px;
+    margin-bottom: 6px;
+}
+h4, h5, h6, p, label{
+    margin-bottom: 0px;
+}
+
+a:link {
+    color:inherit;
+ }
+
+#section-header{
+    background-color: grey;
+    color: white;
+    padding: 12px 0px;
+}
+
+
+#section-online-score label{
+    padding-right: 1rem;
+}
+.progress{
+    width: 100%;
+}
+#proScore{
+    width: 0px;
+}
+
+#section-normal-score{
+    margin-bottom: 20.8px;
+}
+#section-normal-score #blueScore{
+    color: blue;
+}
+#section-normal-score #redScore{
+    color: red;
+}
+
+
+#section-message .alert{
+    margin-bottom: 0px;
+}
+
+
+.table-wrapper {
+    max-height: 50vh;
+    overflow: auto;
+}
+
+#section-button{
+    width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    section{
+        margin-bottom: 4px;
+    }
+    #section-normal-score{
+        margin-bottom: 19.4667px;
+    }
+    .table-wrapper {
+        max-height: none;
+        overflow: hidden;
+    }
+}
+
+/*////////////////////////////////////////////////*/
+/* ///////////////for field////////////////////// */
+/*////////////////////////////////////////////////*/
+#field .col-sm-6{
+    margin-bottom: 6px;
+}
+
+#section-normal-field{
+    background-size: cover;
+    max-height: 75vh;
+    padding: 0%;
+    margin-bottom: 0px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+    display: flex;
+    background-image: url(field.png);
+    max-width: 75vh;
+    /* aspect-ratio: 1/1; */
+}
+
+#section-normal-field button{
+    border-radius: 50%;
+    height: 80%;
+    width: 80%;
+}
+#section-normal-field label{
+    font-size: 10px;
+}
+#section-normal-field p{
+    font-size: 10px;
+}
+#section-normal-field .score{
+    width: 100%;
+}
+#section-normal-field .btn-grp{
+    width: 100%;
+}
+.break {
+   flex-basis: 100%;
+   height: 0;
+}
+.empty-flex{
+    flex-basis: 27%;
+}
+
+
+@media only screen and (max-width: 768px) and (min-width: 576px) {
+    #section-normal-field button{
+        padding: .125rem .5rem;
+        font-size: .75rem;
+        line-height: 1.5;
+    }
+    #section-normal-field label{
+        margin-bottom: 0;
+        font-size: 8px;
+    }
+    #section-normal-field{
+        background-size: cover;
+        max-height: 55vh;
+        padding: 0%;
+        margin-bottom: 0px;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-content: space-around;
+        display: flex;
+        background-image: url(field.png);
+        max-width: 55vh;
+        /* aspect-ratio: 1/1; */
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    /* For mobile phones: */
+    #field .col-sm-6{
+        margin-bottom: 4px;
+    }
+    #section-normal-field{
+        background-size: cover;
+        max-height: 55vh;
+        padding: 0%;
+        margin-bottom: 0px;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-content: space-around;
+        display: flex;
+        background-image: url(field.png);
+        max-width: 55vh;
+        /* aspect-ratio: 1/1; */
+    }
+    
+}
