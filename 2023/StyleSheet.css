@@ -82,7 +82,7 @@ a:link {
     justify-content: space-around;
     align-content: space-around;
     display: flex;
-    background-image: url(../img/field.png);
+    background-image: url(field.png);
     max-width: 75vh;
     /* aspect-ratio: 1/1; */
 }
@@ -132,7 +132,7 @@ a:link {
         justify-content: space-around;
         align-content: space-around;
         display: flex;
-        background-image: url(../img/field.png);
+        background-image: url(field.png);
         max-width: 55vh;
         /* aspect-ratio: 1/1; */
     }
@@ -152,7 +152,7 @@ a:link {
         justify-content: space-around;
         align-content: space-around;
         display: flex;
-        background-image: url(../img/field.png);
+        background-image: url(field.png);
         max-width: 55vh;
         /* aspect-ratio: 1/1; */
     }
