@@ -13,7 +13,7 @@ Calculating scores with number of arrows might be difficult. This score counter 
 
 ## Getting Started
 
-https://thshek0.github.io/Robocon2021-Score-Counter/
+https://cuhk-robocon.github.io/Competition-Score-Counter/2021/
 
 ## Authors
 
@@ -21,9 +21,9 @@ Me :) @thshek0 @shekanson
 
 ## Screenshots
 <div style="flex">
-  <img src="https://github.com/thshek0/Robocon2021-Score-Counter/blob/main/img/screenshot-laptop-online.png" alt="screenshot-laptop-online" width="400"/>
-  <img src="https://github.com/thshek0/Robocon2021-Score-Counter/blob/main/img/screenshot-mobile-normal.png" alt="screenshot-mobile-normal" width="200"/>
-  <img src="https://github.com/thshek0/Robocon2021-Score-Counter/blob/main/img/screenshot-mobile-online.png" alt="screenshot-mobile-online" width="200"/>
+  <img src="https://github.com/CUHK-Robocon/Competition-Score-Counter/blob/main/2021/img/screenshot-laptop-online.png" alt="screenshot-laptop-online" width="400"/>
+  <img src="https://github.com/CUHK-Robocon/Competition-Score-Counter/blob/main/2021/img/screenshot-mobile-normal.png" alt="screenshot-mobile-normal" width="200"/>
+  <img src="https://github.com/CUHK-Robocon/Competition-Score-Counter/blob/main/2021/img/screenshot-mobile-online.png" alt="screenshot-mobile-online" width="200"/>
 </div>
   
 ## Update
